@@ -1,13 +1,17 @@
 import Head from 'next/head';
 
-export function Home() {
+import styles from '~/styles/home.module.scss';
+
+import Navbar from '../components/Navbar';
+
+export default function Home() {
   return (
     <>
       <Head>
         <title>Home - Felipe Gouvea</title>
       </Head>
 
-      <h1>Hello world</h1>
+      <h1>hello world</h1>
     </>
   );
 }
