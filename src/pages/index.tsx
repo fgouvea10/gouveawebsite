@@ -1,7 +1,28 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
+import AboutSection from '~/components/AboutSection';
 import Button from '~/components/Button';
+import RecentlyWorksCard from '~/components/RecentWorksCard';
 import styles from '~/styles/home.module.scss';
+
+const data = [
+  {
+    id: 1,
+    route: '/dashgo',
+    name: 'dashgo',
+  },
+  {
+    id: 2,
+    route: '/dashgo',
+    name: 'dashgo',
+  },
+  {
+    id: 3,
+    route: '/dashgo',
+    name: 'dashgo',
+  },
+];
 
 export default function Home() {
   return (
@@ -27,6 +48,25 @@ export default function Home() {
           <Button title="contact me" />
         </main>
       </section>
+
+      <section className={styles.worksContainer}>
+        <header>
+          <div>
+            <h1>Recent works</h1>
+            <p>My most recent works</p>
+          </div>
+
+          <div>
+            <span>
+              <Link href="/portfolio">View more</Link>
+            </span>
+          </div>
+        </header>
+
+        <main>{data && <RecentlyWorksCard data={data} />}</main>
+      </section>
+
+      <AboutSection />
     </>
   );
 }
