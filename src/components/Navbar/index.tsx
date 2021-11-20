@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(901);
 
   function handleOpenNavbar() {
     setIsMenuOpen(!isMenuOpen);
