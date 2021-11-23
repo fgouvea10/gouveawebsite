@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import AboutSection from '~/components/AboutSection';
 import Button from '~/components/Button';
+import { PersonalizedAvatar } from '~/components/PersonalizedAvatar';
 import RecentlyWorksCard from '~/components/RecentWorksCard';
 import styles from '~/styles/home.module.scss';
 
@@ -33,9 +34,10 @@ export default function Home() {
 
       <section className={styles.landing}>
         <main className={styles.hero}>
-          <div>
-            <img src="/images/memoji.png" alt="Felipe's memoji winking" />
-          </div>
+          <PersonalizedAvatar
+            image="/images/waving.png"
+            label="Felipe's memoji winking"
+          />
           <h4>Hey! I’m Felipe 👋</h4>
           <h1>Uniting experience and passion with a single purpose</h1>
           <p>
