@@ -5,9 +5,13 @@ import { MdOutlineClose } from 'react-icons/md';
 import { ActiveLink } from '../ActiveLink';
 import styles from './styles.module.scss';
 
+interface NavbarProps {
+  window: number;
+}
+
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(901);
+  const [screenWidth, setScreenWidth] = useState(0);
 
   function handleOpenNavbar() {
     setIsMenuOpen(!isMenuOpen);
