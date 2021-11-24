@@ -1,10 +1,13 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import Button from '~/components/Button';
 import { PersonalizedAvatar } from '~/components/PersonalizedAvatar';
 import styles from '~/styles/404.module.scss';
 
 export default function Error() {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -27,7 +30,7 @@ export default function Error() {
             try again. Would you like to take a risk?
           </p>
 
-          <Button title="Back" />
+          <Button title="Back" onClick={() => router.push('/')} />
         </aside>
       </section>
     </>
