@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { HiOutlineMenuAlt4, HiOutlineMail } from 'react-icons/hi';
 import { MdOutlineClose } from 'react-icons/md';
 
 import { ActiveLink } from '../ActiveLink';
 import styles from './styles.module.scss';
-
-interface NavbarProps {
-  window: number;
-}
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +12,10 @@ function Navbar() {
   function handleOpenNavbar() {
     setIsMenuOpen(!isMenuOpen);
   }
+
+  useLayoutEffect(() => {
+    setScreenWidth(window.innerWidth);
+  }, []);
 
   useEffect(() => {
     function changeScreenWidth() {
