@@ -30,6 +30,10 @@ export default function Home() {
     <>
       <Head>
         <title>Home - Felipe Gouvea</title>
+        <meta
+          name="description"
+          content="Uniting experience and passion with a single purpose"
+        />
       </Head>
 
       <section className={styles.landing}>
@@ -47,7 +51,9 @@ export default function Home() {
             <b>Let’s build a project together?</b>
           </p>
 
-          <Button title="contact me" />
+          <Link href="/contact" passHref>
+            <Button title="contact me" />
+          </Link>
         </main>
       </section>
 
