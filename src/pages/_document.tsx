@@ -7,8 +7,13 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Nunito:wght@400;600;700;800;900&family=Roboto:wght@400;700;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
+          />
+          <link rel="icon" type="image/x-png" href="/images/favicon.png" />
+          <meta
+            name="keywords"
+            content="felipegouvea, gouvea, web designer, web development, website, web, ui/ux, ui, ui design, ux design, portfolio, frontend developer"
           />
         </Head>
 
