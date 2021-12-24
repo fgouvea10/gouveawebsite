@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --gray-100: #FFFAF4;
+  --gray-500: #FAD6AE;
+  --background: #000;
+}
+
 @media (max-width: 1080px) {
   html {
     font-size: 93.75%;
@@ -22,7 +28,7 @@ body {
 }
 
 body, input, textarea, select, button {
-  font: 400 1rem "Nunito", sans-serif;
+  font: 400 1rem "Poppins", sans-serif;
 }
 
 button {
