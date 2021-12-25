@@ -1,25 +1,123 @@
+@keyframes fadeIn{
+  from{
+      opacity:0
+  }
+
+  to{
+      opacity:1
+  }
+}
+@-moz-keyframes fadeIn{
+  from{
+      opacity:0
+  }
+
+  to{
+      opacity:1
+  }
+}
+@-webkit-keyframes fadeIn{
+  from{
+      opacity:0
+  }
+
+  to{
+      opacity:1
+  }
+}
+
 .container {
-  width: 100%;
-  height: 50px;
+  height: 5rem;
+  border-bottom: 1px solid var(--gray-800);
 }
 
 .headerContent {
+  max-width: 1120px;
+  height: 5rem;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
-  padding: 1rem 10rem;
 
-  > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+  > svg {
+    width: 100px;
+    height: auto;
   }
 
-  h1 {
-    font-size: 2rem;
-    font-weight: 900;
+  .menu {
+    width: 35px;
+    height: auto;
+  }
+
+  .menubuttons {
+    width: auto;
+    height: auto;
+    padding: 10px 0 10px 0;
+
+    .first {
+      width: 13px;
+      height: 1.5px;
+      background: #fff;
+      margin-bottom: 5px;
+      display: block;
+      transition: 0.3s all;
+    }
+
+    .second {
+      width: 13px;
+      height: 1.5px;
+      background: #fff;
+      margin: 0 0;
+      transition: 0.3s all;
+    }
+  }
+
+  .menubuttons.active .first {
+    transform: rotate(45deg);
+    background: #000;
+    margin-bottom: -1.5px;
+  }
+  .menubuttons.active .second {
+    transform: rotate(-45deg);
+    background: #000;
+  }
+
+  nav {
+    height: 5rem;
+
+    a {
+      display: inline-block;
+      position: relative;
+      padding: 0 0.5rem;
+      height: 5rem;
+      line-height: 5rem;
+      color: var(--gray-100);
+      transition: color 0.2s;
+
+      & + a {
+        margin-left: 2rem;
+      }
+
+      &:hover {
+        color: var(--orange-500);
+      }
+
+      &.active {
+        color: var(--orange-500);
+      }
+
+      &.active::after {
+        content: '';
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: var(--orange-500);
+      }
+    }
   }
 
   button {
@@ -28,39 +126,6 @@
     right: 10px;
     top: 7px;
     padding: 1rem 2rem;
-    font-size: 14px;
-  }
-
-  ul {
-    list-style-type: none;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    li {
-      margin-right: 2rem;
-      font-size: 1rem;
-      cursor: pointer;
-
-      a {
-        display: inline-block;
-        transition: background 0.4s;
-
-        &:hover {
-          background: -webkit-linear-gradient(#85afd5, rgba(208, 76, 210, 0.5));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        &.active {
-          font-weight: 900;
-          background: -webkit-linear-gradient(#85afd5, rgba(208, 76, 210, 0.5));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      }
-    }
   }
 
   @media (max-width: 900px) {
@@ -75,22 +140,45 @@
       padding: 1rem 1rem;
     }
 
-    ul {
-      position: absolute;
+    nav {
+      position: fixed;
       left: 0;
       top: 0;
+      display: flex;
       flex-direction: column;
-      width: 100vw;
-      height: 100vh;
-      background: #000;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 0vh;
+      overflow: hidden;
+      background: #fff;
+      animation: fadeIn 1s ease forwards;
+      -webkit-animation: fadeInOut 5s forwards;
+      -moz-animation: fadeInOut 5s forwards;
+      -o-animation: fadeInOut 5s forwards;
+      transition: 0.6s all;
 
-      li {
+      &.active {
+        height: 100vh;
+      }
+
+      a {
+        color: var(--background);
+        font-size: 2.875rem;
         width: 100%;
         text-align: center;
-        font-size: 2rem;
-        margin-right: 0px;
-        margin-top: 20px;
-        color: #fff;
+
+        & + a {
+          margin-left: 0;
+        }
+
+        &.active {
+          font-weight: 600;
+        }
+
+        &.active::after {
+          display: none;
+        }
       }
     }
   }
