@@ -1,103 +1,66 @@
 .landing {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: calc(100vh - 50px);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-height: 500px) {
-    height: calc(100vh + 300px);
-  }
-
-  @media (max-height: 800px) {
-    height: calc(100vh + 150px);
-  }
-}
-
-.hero {
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  row-gap: 2rem;
-
-  h4 {
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 27px;
-    text-align: center;
-  }
-
-  h1 {
-    font-weight: 900;
-    font-size: 52px;
-    line-height: 50px;
-    text-align: center;
-  }
-
-  p {
-    font-size: 1rem;
-    text-align: center;
-  }
-}
-
-.worksContainer {
   width: 100%;
-  padding: 1rem 10rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  height: calc(100vh - 5rem);
+  background: url("/images/landing.png") center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 
-  header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    width: 30%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 80px;
+    justify-content: center;
+    row-gap: 2rem;
 
     h1 {
-      color: #161616;
-      font-size: 34px;
-      font-weight: 800;
+      color: var(--gray-100);
+      font-size: 3.75rem;
+      line-height: 50px;
+      text-align: center;
+      font-weight: 900;
+      font-family: 'Montserrat', sans-serif;
     }
 
     p {
-      color: #C4C4C4;
-      font-weight: 400;
-      margin-top: 10px;
+      color: var(--gray-100);
+      font-size: 1rem;
+      text-align: center;
     }
 
-    span {
-      text-decoration: underline;
-      color: rgba(208, 76, 210, 0.5);
-    }
+    button {
+      background: var(--orange-500);
+      border: none;
+      padding: 0.875rem 3rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: background 0.3s;
 
-    @media (max-width: 900px) {
-      flex-direction: column;
-
-      span {
-        display: none;
-      }
-
-      h1, p {
-        text-align: center;
+      &:hover {
+        background: var(--orange-400);
       }
     }
-  }
 
-  main {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
+    @media (max-width: 1900px) {
+      width: 40%;
+    }
+
+    @media (max-width: 1400px) {
+      width: 60%;
+    }
 
     @media (max-width: 900px) {
       width: 100%;
-      flex-direction: column;
+      padding: 0 0.75rem;
     }
+  }
+
+  @media (max-width: 900px) {
+    background: transparent;
   }
 }
