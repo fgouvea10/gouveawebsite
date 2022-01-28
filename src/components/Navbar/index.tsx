@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styles from './styles.module.scss';
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleOpenNavbar = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <header className={styles.container}>
       <div className={styles.headerContent}>
@@ -44,25 +38,6 @@ function Navbar() {
             fill="white"
           />
         </svg>
-
-        <nav className={`${isMenuOpen && styles.active}`}>
-          <a className={styles.active}>Home</a>
-          <a>Portfolio</a>
-          <a>Contact</a>
-        </nav>
-
-        <button
-          className={`${styles.menu} ${isMenuOpen && styles.active}`}
-          type="button"
-          onClick={handleOpenNavbar}
-        >
-          <div
-            className={`${styles.menubuttons} ${isMenuOpen && styles.active}`}
-          >
-            <div className={styles.first} />
-            <div className={styles.second} />
-          </div>
-        </button>
       </div>
     </header>
   );
