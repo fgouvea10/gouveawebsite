@@ -3,28 +3,29 @@
   height: 300px;
   padding: 16px 16px;
   margin-bottom: 48px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
   border-radius: 5px;
-  background: url('/images/ignews.png') center;
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background: var(--orange-500);
   cursor: pointer;
+  position: relative;
 
   .footer {
-    div:nth-child(1) {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--gray-100);
-      text-transform: uppercase;
-    }
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
 
-    div:nth-child(2) {
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: var(--gray-100);
+    div {
+      color: var(--background);
       text-transform: uppercase;
+
+      &:nth-child(1) {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      &:nth-child(2) {
+        font-weight: 600;
+        font-size: 1.25rem;
+      }
     }
   }
 }
