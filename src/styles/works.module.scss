@@ -1,0 +1,92 @@
+.container {
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  .flex_cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    ul {
+      list-style-type: none;
+      display: flex;
+
+      li {
+        font-weight: 1.125rem; // 18px
+        text-transform: uppercase;
+        color: var(--gray-900);
+        margin-top: 3rem;
+        cursor: pointer;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--orange-500);
+        }
+
+        & + li {
+          margin-left: 2rem;
+        }
+
+        &.active {
+          color: var(--orange-500);
+          font-weight: 700;
+
+          &:hover {
+            color: var(--gray-100);
+          }
+        }
+      }
+    }
+  }
+
+  .cards {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+
+    article {
+      width: 45%;
+      height: 300px;
+      padding: 16px 16px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      border-radius: 5px;
+      background: url('/images/ignews.png') center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+
+      .footer {
+        div:nth-child(1) {
+          font-weight: 700;
+          font-size: 1rem;
+          color: var(--gray-100);
+          text-transform: uppercase;
+        }
+
+        div:nth-child(2) {
+          font-weight: 600;
+          font-size: 1.25rem;
+          color: var(--gray-100);
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      article {
+        width: 100%;
+      }
+    }
+  }
+}
