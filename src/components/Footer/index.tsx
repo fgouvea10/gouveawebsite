@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
+import Link from 'next/link';
+
 import styles from './styles.module.scss';
 
 export default function Footer() {
@@ -14,18 +16,11 @@ export default function Footer() {
 
         <div className={styles.social}>
           <ul>
-            <li>
-              <a href="#">Instagram</a>
-            </li>
-            <li>
-              <a href="#">Linkedin</a>
-            </li>
-            <li>
-              <a href="#">Behance</a>
-            </li>
-            <li>
-              <a href="#">Dribbble</a>
-            </li>
+            {MEDIA_MOCK.map((item) => (
+              <li key={item.id}>
+                <Link href={item.href}>{item.name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -42,3 +37,26 @@ export default function Footer() {
     </footer>
   );
 }
+
+const MEDIA_MOCK = [
+  {
+    id: 1,
+    name: 'Instagram',
+    href: 'https://instagram.com/fgouvea10',
+  },
+  {
+    id: 2,
+    name: 'Linkedin',
+    href: 'https://linkedin.com/in/fgouvea10',
+  },
+  {
+    id: 3,
+    name: 'Behance',
+    href: 'https://behance.net/gouvea',
+  },
+  {
+    id: 4,
+    name: 'Dribbble',
+    href: 'https://instagram.com/fgouvea10',
+  },
+];
