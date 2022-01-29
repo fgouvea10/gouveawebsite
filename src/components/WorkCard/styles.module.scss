@@ -1,0 +1,30 @@
+.container {
+  width: 45%;
+  height: 300px;
+  padding: 16px 16px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  border-radius: 5px;
+  background: url('/images/ignews.png') center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  cursor: pointer;
+
+  .footer {
+    div:nth-child(1) {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--gray-100);
+      text-transform: uppercase;
+    }
+
+    div:nth-child(2) {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--gray-100);
+      text-transform: uppercase;
+    }
+  }
+}
