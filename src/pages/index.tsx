@@ -4,33 +4,16 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import Head from 'next/head';
 import Link from 'next/link';
 
+import WorkCard from '~/components/WorkCard';
 import { featuredWorks } from '~/mocks/works';
 import styles from '~/styles/home.module.scss';
+import { formatedFeature } from '~/utils/formatedFeature';
 
 export default function Home() {
   const [currentFeature, setCurrentFeature] = useState('all');
 
   const handleChangeContent = (type: string) => {
     setCurrentFeature(type);
-  };
-
-  const formatedFeature = (name: string) => {
-    switch (name) {
-      case 'all':
-        return (name = 'All');
-
-      case 'web':
-        return (name = 'web');
-
-      case 'mobile':
-        return (name = 'Mobile');
-
-      case 'ui-ux':
-        return (name = 'UI/UX');
-
-      default:
-        return (name = 'all');
-    }
   };
 
   return (
@@ -89,14 +72,12 @@ export default function Home() {
                 featuredWorks.map(
                   (work) =>
                     currentFeature === work.type && (
-                      <article key={work.id}>
-                        <div className={styles.footer}>
-                          <div className={styles.category}>
-                            {formatedFeature(work.type)}
-                          </div>
-                          <div className={styles.name}>{work.name}</div>
-                        </div>
-                      </article>
+                      <WorkCard
+                        key={work.id}
+                        type={formatedFeature(work.type)}
+                        name={work.name}
+                        href={work.name}
+                      />
                     )
                 )}
             </div>

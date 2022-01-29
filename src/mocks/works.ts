@@ -21,7 +21,7 @@ const featuredWorks = [
     id: 4,
     name: 'ignews',
     image: 'ignews',
-    type: 'all',
+    type: 'web',
   },
 ];
 
