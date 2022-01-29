@@ -1,10 +1,38 @@
+import React, { useState } from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
 import Head from 'next/head';
+import Link from 'next/link';
 
+import { featuredWorks } from '~/mocks/works';
 import styles from '~/styles/home.module.scss';
 
 export default function Home() {
+  const [currentFeature, setCurrentFeature] = useState('all');
+
+  const handleChangeContent = (type: string) => {
+    setCurrentFeature(type);
+  };
+
+  const formatedFeature = (name: string) => {
+    switch (name) {
+      case 'all':
+        return (name = 'All');
+
+      case 'web':
+        return (name = 'web');
+
+      case 'mobile':
+        return (name = 'Mobile');
+
+      case 'ui-ux':
+        return (name = 'UI/UX');
+
+      default:
+        return (name = 'all');
+    }
+  };
+
   return (
     <>
       <Head>
@@ -13,7 +41,7 @@ export default function Home() {
         </title>
         <meta
           name="description"
-          content="Uniting experience and passion with a single purpose"
+          content="Web developer and UI/UX Designer in love with the best tools and technologies in the world. Gathering experiences and spreading them around. Let's create experiences together?"
         />
       </Head>
 
@@ -23,7 +51,10 @@ export default function Home() {
           <div className={styles.wrapper}>
             <p>Contact me for hire</p>
             <p>hey@gouvea.dev</p>
-            <button type="button">
+            <button
+              type="button"
+              onClick={() => (window.location.href = 'mailto:hey@gouvea.dev')}
+            >
               <AiOutlineArrowRight size={20} color={'#29292e'} />
             </button>
           </div>
@@ -34,7 +65,7 @@ export default function Home() {
         <div className={styles.wrapper}>
           <div className={styles.title}>
             <h1>Works I did</h1>
-            <a href={'#'}>View all</a>
+            <Link href="/works">View all</Link>
           </div>
 
           <div className={styles.flex_cards}>
@@ -43,7 +74,10 @@ export default function Home() {
                 {POSSIBLE_FILTERS.map((item) => (
                   <li
                     key={item.id}
-                    className={`${item.type === 'active' && styles.active}`}
+                    className={`${
+                      currentFeature === item.type && styles.active
+                    }`}
+                    onClick={() => handleChangeContent(item.type)}
                   >
                     {item.name}
                   </li>
@@ -51,30 +85,20 @@ export default function Home() {
               </ul>
             </div>
             <div className={styles.cards}>
-              <article>
-                <div className={styles.footer}>
-                  <div className={styles.category}>Web</div>
-                  <div className={styles.name}>ignews</div>
-                </div>
-              </article>
-              <article>
-                <div className={styles.footer}>
-                  <div className={styles.category}>Web</div>
-                  <div className={styles.name}>ignews</div>
-                </div>
-              </article>
-              <article>
-                <div className={styles.footer}>
-                  <div className={styles.category}>Web</div>
-                  <div className={styles.name}>ignews</div>
-                </div>
-              </article>
-              <article>
-                <div className={styles.footer}>
-                  <div className={styles.category}>Web</div>
-                  <div className={styles.name}>ignews</div>
-                </div>
-              </article>
+              {featuredWorks &&
+                featuredWorks.map(
+                  (work) =>
+                    currentFeature === work.type && (
+                      <article key={work.id}>
+                        <div className={styles.footer}>
+                          <div className={styles.category}>
+                            {formatedFeature(work.type)}
+                          </div>
+                          <div className={styles.name}>{work.name}</div>
+                        </div>
+                      </article>
+                    )
+                )}
             </div>
           </div>
         </div>
@@ -87,18 +111,21 @@ const POSSIBLE_FILTERS = [
   {
     id: 1,
     name: 'All',
-    type: 'active',
+    type: 'all',
   },
   {
     id: 2,
     name: 'Web',
+    type: 'web',
   },
   {
     id: 3,
     name: 'Mobile',
+    type: 'mobile',
   },
   {
     id: 4,
     name: 'UI/UX',
+    type: 'ui-ux',
   },
 ];
