@@ -2,7 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { formatedFeature } from '../../utils/formatedFeature';
+import { formatedFeature } from '~/utils/formatedFeature';
+
 import styles from './styles.module.scss';
 
 type WorkCardProps = {
