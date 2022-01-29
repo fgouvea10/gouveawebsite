@@ -173,34 +173,6 @@
         flex-wrap: wrap;
         margin-top: 80px;
 
-        article {
-          width: 45%;
-          height: 300px;
-          background: #c4c4c4;
-          padding: 16px 16px;
-          margin-bottom: 48px;
-          display: flex;
-          align-items: flex-end;
-          justify-content: flex-start;
-          border-radius: 5px;
-
-          .footer {
-            div:nth-child(1) {
-              font-weight: 700;
-              font-size: 1rem;
-              color: var(--gray-100);
-              text-transform: uppercase;
-            }
-
-            div:nth-child(2) {
-              font-weight: 600;
-              font-size: 1.25rem;
-              color: var(--gray-100);
-              text-transform: uppercase;
-            }
-          }
-        }
-
         @media (max-width: 768px) {
           flex-direction: column;
 
