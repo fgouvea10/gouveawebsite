@@ -15,6 +15,9 @@ export default class MyDocument extends Document {
             name="keywords"
             content="felipegouvea, gouvea, web designer, web development, portfolio web designer, portfolio web developer, portfolio develop, website, web, ui/ux, ui, ui design, ux design, portfolio, frontend developer"
           />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://felipegouvea.com" />
+          <meta property="og:image" content="images/thubmnail.png" />
         </Head>
 
         <body>
