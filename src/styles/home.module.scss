@@ -1,4 +1,4 @@
-.hero {
+#hero {
   width: 100%;
   height: calc(100vh - 5rem);
 
@@ -56,7 +56,7 @@
         border: none;
         padding: 1rem 1.125rem;
         border-radius: 0 1.25rem 0 0;
-        transition: filter 0.3s ease;
+        transition: 0.3s all;
 
         &:hover {
           filter: brightness(70%);
@@ -95,7 +95,7 @@
   }
 }
 
-.works {
+#works {
   max-width: 1480px;
   margin: 0 auto;
 

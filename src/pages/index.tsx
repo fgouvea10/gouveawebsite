@@ -28,7 +28,7 @@ export default function Home() {
         />
       </Head>
 
-      <section className={styles.hero}>
+      <section id={styles.hero}>
         <div className={styles.content}>
           <h1>Uniting experience and passion with a single purpose</h1>
           <div className={styles.wrapper}>
@@ -44,10 +44,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.works}>
+      <section id={styles.works}>
         <div className={styles.wrapper}>
           <div className={styles.title}>
-            <h1>Works I did</h1>
+            <h1>Maybe try this</h1>
             <Link href="/works">View all</Link>
           </div>
 
