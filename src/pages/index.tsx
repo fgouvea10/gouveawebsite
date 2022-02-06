@@ -24,7 +24,7 @@ export default function Home() {
         </title>
         <meta
           name="description"
-          content="Web developer and UI/UX Designer in love with the best tools and technologies in the world. Gathering experiences and spreading them around. Let's create experiences together?"
+          content="Enthusiast web development and UI designer. Uniting experience and passion with a single purpose."
         />
       </Head>
 
