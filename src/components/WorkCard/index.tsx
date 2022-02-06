@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 
 import Link from 'next/link';
 
@@ -15,8 +16,16 @@ export default function WorkCard({ type, name, href }: WorkCardProps) {
     <Link href={`/works/${href}`}>
       <article className={styles.container}>
         <div className={styles.footer}>
-          <div className={styles.category}>{type}</div>
-          <div className={styles.name}>{name}</div>
+          <div>
+            <div className={styles.category}>{type}</div>
+            <div className={styles.name}>{name}</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => (window.location.href = 'mailto:hey@gouvea.dev')}
+          >
+            <AiOutlineArrowRight size={20} color={'#fff'} />
+          </button>
         </div>
       </article>
     </Link>

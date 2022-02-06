@@ -3,6 +3,7 @@
   position: fixed;
   top: 45%;
   list-style-type: none;
+  z-index: 1;
 
   li {
     color: var(--gray-100);
