@@ -1,20 +1,13 @@
-import '~/styles/global.scss';
 import React from 'react';
 
+import '~/styles/global.scss';
+
 import type { AppProps } from 'next/app';
-
-import Footer from '~/components/Footer';
-import Sidebar from '~/components/Sidebar';
-
-import Navbar from '../components/Navbar';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Navbar />
-      <Sidebar />
       <Component {...pageProps} />
-      <Footer />
     </>
   );
 }
