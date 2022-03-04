@@ -13,11 +13,14 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/x-png" href="/images/favicon.png" />
           <meta
             name="keywords"
-            content="felipegouvea, gouvea, web designer, web development, portfolio web designer, portfolio web developer, portfolio develop, website, web, ui/ux, ui, ui design, ux design, portfolio, frontend developer"
+            content="felipegouvea, gouvea, felipe gouvea web development, felipe gouvea uiux, web designer, web development, portfolio web designer, portfolio web developer, portfolio develop, website, web, ui/ux, ui, ui design, ux design, portfolio, frontend developer"
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://felipegouvea.com" />
-          <meta property="og:image" content="images/thubmnail.png" />
+          <meta
+            property="og:image"
+            content="https://felipegouvea.com/images/thubmnail.png"
+          />
         </Head>
 
         <body>
