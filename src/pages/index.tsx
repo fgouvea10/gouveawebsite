@@ -2,8 +2,6 @@ import React from 'react';
 
 import Head from 'next/head';
 
-import Navbar from '~/components/Navbar';
-
 export default function Home() {
   return (
     <>
@@ -16,8 +14,6 @@ export default function Home() {
           content="Enthusiast web development and UI designer. Uniting experience and passion with a single purpose."
         />
       </Head>
-
-      <Navbar />
 
       <div></div>
     </>
