@@ -6,6 +6,7 @@ import {
 } from 'react-icons/ai';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { logo } from '~/config/logo';
 
@@ -21,7 +22,9 @@ export default function Navbar() {
   return (
     <header id={styles.header}>
       <div className={styles.headerContent}>
-        <Image src={logo.textBlack} className={styles.logo} />
+        <Link href="/" passHref>
+          <Image src={logo.textBlack} className={styles.logo} />
+        </Link>
 
         <nav className={`${isMenuOpen && styles.active}`}>
           {NAVBAR_MOCK.map((item) => (
