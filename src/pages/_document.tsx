@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="https://felipegouvea.com" />
           <meta
             property="og:image"
-            content="https://felipegouvea.com/images/thubmnail.png"
+            content="https://www.felipegouvea.com/images/thumbnail.png"
           />
         </Head>
 
