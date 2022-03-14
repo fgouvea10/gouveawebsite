@@ -130,7 +130,8 @@
   }
 
   .copy {
-    display: none
+    display: none;
+
     @media (min-width: 1600px) {
       position: absolute;
       left: 0;

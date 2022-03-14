@@ -51,7 +51,7 @@ export default function Home() {
                     <span>Web Development</span>
                     <Link href="/">See study case</Link>
                   </div>
-                  <div className={styles.featuredWork}>NE</div>
+                  <div className={styles.featuredWork}>NEW</div>
                 </div>
                 <div className={styles.card}>
                   <div className={styles.cardContent}>
