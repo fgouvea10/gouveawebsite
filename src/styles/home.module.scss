@@ -1,0 +1,158 @@
+#hero {
+  width: 100%;
+  margin-top: 10rem;
+}
+
+#hero .container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .heroTexts {
+      display: flex;
+      flex-direction: column;
+      margin-left: 5rem;
+
+      h1 {
+        font-size: var(--7xl);
+        max-width: 60%;
+      }
+
+      p {
+        margin-top: var(--6xl);
+        font-size: var(--xl);
+        max-width: 60%;
+      }
+    }
+
+    > button {
+      background: var(--title-color);
+      color: var(--body-color);
+      border: none;
+      border-radius: 50%;
+      padding: 2.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .works {
+    margin-top: 9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h3 {
+      font-size: var(--6xl);
+      max-width: 20%;
+      margin-left: 5rem;
+    }
+
+    .cards {
+      display: flex;
+      align-items: center;
+
+      .card {
+        display: flex;
+        width: 200px;
+        height: 250px;
+        border: 1px solid var(--title-color);
+        position: relative;
+
+        .cardContent {
+          width: 100%;
+          padding: 2rem 2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+
+          h5 {
+            font-size: var(--2xl);
+          }
+
+          span {
+            font-size: var(--xl);
+            max-width: 60%;
+          }
+
+          a {
+            text-decoration: underline;
+          }
+
+          &.active {
+            border: none;
+            background: var(--title-color);
+            color: var(--body-color);
+
+            a {
+              color: var(--body-color);
+            }
+          }
+        }
+
+        .featuredWork {
+          background: var(--base-color);
+          padding: 0.125rem 0.825rem;
+          text-align: center;
+          position: absolute;
+          top: 0;
+          right: -2px;
+          font-size: 12px;
+          color: var(--body-color);
+          border-radius: 0 0 0 10px;
+        }
+      }
+    }
+
+    @media (max-width: 1100px) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      h3 {
+        font-size: var(--6xl);
+        max-width: 100%;
+        text-align: left;
+      }
+
+      .cards {
+        margin-left: 5rem;
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  .copy {
+    display: none
+    @media (min-width: 1600px) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      > div {
+        width: 1px;
+        height: 500px;
+        background: var(--title-color);
+      }
+
+      span {
+        margin-top: 2rem;
+        writing-mode: vertical-lr;
+      }
+    }
+  }
+
+  @media (max-width: 1600px) {
+    padding: 0 4rem;
+  }
+}
