@@ -145,6 +145,10 @@
       display: none;
     }
 
+    .right {
+      z-index: 2;
+    }
+
     nav {
       position: fixed;
       left: 0;
@@ -162,6 +166,7 @@
       -moz-animation: fadeInOut 5s forwards;
       -o-animation: fadeInOut 5s forwards;
       transition: 0.6s all;
+      z-index: 1;
 
       &.active {
         height: 100vh;
