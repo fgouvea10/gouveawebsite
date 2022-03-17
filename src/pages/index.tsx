@@ -1,4 +1,5 @@
 import React from 'react';
+import { BsArrowUpRight } from 'react-icons/bs';
 
 import Head from 'next/head';
 import Link from 'next/link';
@@ -42,14 +43,22 @@ export default function Home() {
                   <div className={styles.cardContent}>
                     <h5>ignews</h5>
                     <span>Web Development</span>
-                    <Link href="/">See study case</Link>
+                    <Link href="/">
+                      <div>
+                        See study case <BsArrowUpRight />
+                      </div>
+                    </Link>
                   </div>
                 </div>
                 <div className={styles.card}>
                   <div className={`${styles.cardContent} ${styles.active}`}>
                     <h5>ignews</h5>
                     <span>Web Development</span>
-                    <Link href="/">See study case</Link>
+                    <Link href="/">
+                      <div>
+                        See study case <BsArrowUpRight />
+                      </div>
+                    </Link>
                   </div>
                   <div className={styles.featuredWork}>NEW</div>
                 </div>
@@ -57,7 +66,11 @@ export default function Home() {
                   <div className={styles.cardContent}>
                     <h5>ignews</h5>
                     <span>Web Development</span>
-                    <Link href="/">See study case</Link>
+                    <Link href="/">
+                      <div>
+                        See study case <BsArrowUpRight />
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>
