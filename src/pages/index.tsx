@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { BsArrowUpRight } from 'react-icons/bs';
 
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 
+import { geometric } from '~/config/geometric';
 import styles from '~/styles/home.module.scss';
 
 export default function Home() {
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    setScreenWidth(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    const changeScreenWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', changeScreenWidth);
+
+    return () => {
+      window.removeEventListener('resize', changeScreenWidth);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -79,6 +99,37 @@ export default function Home() {
             <div className={styles.copy}>
               <div />
               <span>&copy; 2022</span>
+            </div>
+          </div>
+        </section>
+
+        <section id={styles.features}>
+          <div className={styles.container}>
+            <div className={styles.left}>
+              <h3>Find out what I can do for you</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco
+              </p>
+            </div>
+
+            {screenWidth > 768 && (
+              <Image
+                src={geometric.small}
+                alt="Blue, black and white geometric shapes"
+              />
+            )}
+
+            <div className={styles.right}>
+              <div className={styles.projects_done}>
+                <div>Projects done</div>
+                <span>20</span>
+              </div>
+              <div className={styles.projects_done}>
+                <div>Projects done</div>
+                <span>20</span>
+              </div>
             </div>
           </div>
         </section>
