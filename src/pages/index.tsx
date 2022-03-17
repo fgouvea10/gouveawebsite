@@ -133,6 +133,64 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section id={styles.blog}>
+          <div className={styles.container}>
+            <h2>Blog posts</h2>
+
+            <div className={styles.blog_card}>
+              <div className={styles.blog_img}>
+                <div />
+              </div>
+
+              <div className={styles.blog_content}>
+                <span>#UI/UX</span>
+                <h3>How to make something really nice and succeed with that</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.divider} />
+
+            <div className={styles.blog_card}>
+              <div className={styles.blog_img}>
+                <div />
+              </div>
+
+              <div className={styles.blog_content}>
+                <span>#UI/UX</span>
+                <h3>How to make something really nice and succeed with that</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.divider} />
+
+            <div className={styles.blog_card}>
+              <div className={styles.blog_img}>
+                <div />
+              </div>
+
+              <div className={styles.blog_content}>
+                <span>#UI/UX</span>
+                <h3>How to make something really nice and succeed with that</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );
