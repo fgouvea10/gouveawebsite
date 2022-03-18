@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Etoile';
+  src: url('/fonts/Etoile-Regular.ttf');
+  font-style: 'normal';
+  font-weight: 400;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,7 +48,7 @@ body {
 }
 
 body, input, textarea, select, button {
-  font: var(--regular) var(--md) "Outfit", sans-serif;
+  font: var(--regular) var(--md) "Raleway", sans-serif;
 }
 
 button {

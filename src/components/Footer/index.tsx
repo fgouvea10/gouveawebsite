@@ -5,6 +5,9 @@ import {
   FaBehance,
   FaDribbble,
 } from 'react-icons/fa';
+import { FiArrowUp } from 'react-icons/fi';
+
+import Link from 'next/link';
 
 import styles from './styles.module.scss';
 
@@ -21,18 +24,13 @@ export default function Footer() {
             </span>
           </div>
           <div className={styles.right}>
-            <div className={styles.social_media_card}>
-              <FaInstagram />
-            </div>
-            <div className={styles.social_media_card}>
-              <FaLinkedinIn />
-            </div>
-            <div className={styles.social_media_card}>
-              <FaBehance />
-            </div>
-            <div className={styles.social_media_card}>
-              <FaDribbble />
-            </div>
+            {FOOTER_MOCK.map((item) => (
+              <div className={styles.social_media_card} key={item.id}>
+                <Link href={item.route} passHref>
+                  {item.icon}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -45,6 +43,37 @@ export default function Footer() {
           </span>
         </div>
       </div>
+
+      <div className={styles.top} onClick={() => window.scrollTo(0, 0)}>
+        <FiArrowUp />
+      </div>
     </footer>
   );
 }
+
+const FOOTER_MOCK = [
+  {
+    id: 1,
+    name: 'Instagram',
+    route: 'https://instagram.com/fgouvea10',
+    icon: <FaInstagram />,
+  },
+  {
+    id: 2,
+    name: 'LinkedIn',
+    route: 'https://linkedin.com/in/fgouvea10',
+    icon: <FaLinkedinIn />,
+  },
+  {
+    id: 3,
+    name: 'Behance',
+    route: 'https://behance.net/gouvea',
+    icon: <FaBehance />,
+  },
+  {
+    id: 4,
+    name: 'Dribbble',
+    route: 'https://dribbble.com/fgouvea10',
+    icon: <FaDribbble />,
+  },
+];
