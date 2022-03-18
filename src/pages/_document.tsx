@@ -5,10 +5,21 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Niramit:wght@700&family=Outfit:wght@400;500;600;700;800&family=Rock+Salt&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            rel="preload"
+            href="/fonts/Etoile-Regular.ttf"
+            as="font"
+            crossOrigin=""
           />
           <link rel="icon" type="image/x-png" href="/images/favicon.png" />
           <meta
