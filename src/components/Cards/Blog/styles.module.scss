@@ -1,3 +1,9 @@
+@keyframes loader {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 #blogCard {
   width: clamp(360px, 50%, 260px);
   height: clamp(470px, 50%, 370px);
@@ -22,11 +28,13 @@
   }
 
   h4 {
+    width: 100%;
     margin-top: 2rem;
     font-size: 1.25rem;
   }
 
   p {
+    width: 100%;
     margin-top: 1rem;
     font-size: 1rem;
   }
@@ -44,5 +52,56 @@
     &:hover {
       filter: brightness(0.8);
     }
+  }
+
+  .buttonLoading {
+    padding: 1rem 7rem;
+    background: #f2f2f2;
+    border: none;
+    margin-top: 2rem;
+    color: var(--body-color);
+    font-weight: 600;
+    border-radius: 5px;
+  }
+}
+
+.imgLoading.skeleton {
+  width: 320px;
+  height: 190px;
+  border-radius: 5px;
+}
+
+.titleLoading.skeleton {
+  width: 100%;
+  height: 20px;
+}
+
+.textLoading.skeleton {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #f2f2f2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(204, 204, 204, 0.2) 20%,
+      rgba(170, 170, 170, 0.2) 60%,
+      rgba(255, 255, 255, 0)
+    );
+    animation: loader 2s infinite;
   }
 }
