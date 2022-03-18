@@ -28,9 +28,9 @@ export default function Navbar() {
 
         <nav className={`${isMenuOpen && styles.active}`}>
           {NAVBAR_MOCK.map((item) => (
-            <a key={item.id} href={item.route}>
+            <Link key={item.id} href={item.route}>
               {item.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -75,7 +75,7 @@ const NAVBAR_MOCK = [
   {
     id: 3,
     name: 'Blog',
-    route: '/blog',
+    route: '/posts',
   },
   {
     id: 4,
