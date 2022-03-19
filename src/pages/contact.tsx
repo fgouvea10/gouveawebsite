@@ -1,5 +1,5 @@
 import React from 'react';
-import { RiMailSendLine } from 'react-icons/ri';
+import { FaDiscord } from 'react-icons/fa';
 
 import Head from 'next/head';
 
@@ -20,11 +20,19 @@ export default function Contact() {
               <p>What if we had a better discussion about your idea?</p>
             </div>
             <div className={styles.contact_methods}>
-              <div>
-                <RiMailSendLine />
+              <div className={styles.method}>
                 <a href="mailto:hey@felipegouvea.com">
                   hey<span>@</span>felipegouvea.com
                 </a>
+              </div>
+              <div className={styles.discord}>
+                <span>
+                  or maybe we can play something while we discuss about your
+                  idea
+                </span>
+                <div>
+                  <FaDiscord /> gouvea#96590
+                </div>
               </div>
             </div>
           </div>
