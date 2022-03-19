@@ -1,0 +1,58 @@
+#contact {
+  width: 100vw;
+  height: 50vh;
+}
+
+#contact .container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  @media (max-width: 1600px) {
+    padding: 0 2rem;
+  }
+}
+
+#contact .container .title {
+  h1 {
+    font-size: 4.5rem;
+    font-family: 'Etoile', sans-serif;
+  }
+
+  p {
+    color: #707070;
+    font-size: 1.125rem;
+    margin-top: 10px;
+  }
+}
+
+#contact .container .contact_methods {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+
+  div {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+
+    svg {
+      font-size: 3rem;
+    }
+  
+    a {
+      font-size: 2.5rem;
+      margin-left: 1rem;
+  
+      span {
+        font-family: sans-serif;
+      }
+    }
+
+    &:hover {
+     color: var(--base-color);
+    }
+  }
+
+}
