@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import Head from 'next/head';
 
-import BlogCard from '~/components/Cards/Work';
-import BlogCardLoading from '~/components/Cards/Work/loadingCard';
+import BlogCardLoading from '~/components/Cards/Blog/loadingCard';
+import WorkCard from '~/components/Cards/Work';
 import Header from '~/components/Header';
 import styles from '~/styles/works.module.scss';
 
@@ -27,13 +27,13 @@ export default function Posts() {
         <section id={styles.posts}>
           <div className={styles.container}>
             <div className={styles.cards_container}>
-              {/* {(isLoading &&
+              {(isLoading &&
                 Array.from({ length: 3 }, (_, index) => (
                   <BlogCardLoading key={index} />
                 ))) ||
                 Array.from({ length: 7 }, (_, index) => (
-                  <BlogCard key={index} />
-                ))} */}
+                  <WorkCard key={index} />
+                ))}
             </div>
           </div>
         </section>
