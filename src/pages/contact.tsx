@@ -27,8 +27,7 @@ export default function Contact() {
               </div>
               <div className={styles.discord}>
                 <span>
-                  or maybe we can play something while we discuss about your
-                  idea
+                  or maybe we can play something while we discuss about that
                 </span>
                 <div>
                   <FaDiscord /> gouvea#96590
