@@ -102,9 +102,9 @@ export default function Posts() {
             <div className={styles.topics}>
               <h2>What about these other topics?</h2>
               <div className={styles.blogCards}>
-                {Array.from({ length: 4 }, (_, index) => (
+                {/* {Array.from({ length: 4 }, (_, index) => (
                   <BlogCard key={index} />
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
