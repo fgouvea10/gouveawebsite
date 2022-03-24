@@ -27,13 +27,13 @@ export default function Posts() {
         <section id={styles.posts}>
           <div className={styles.container}>
             <div className={styles.cards_container}>
-              {(isLoading &&
+              {/* {(isLoading &&
                 Array.from({ length: 3 }, (_, index) => (
                   <BlogCardLoading key={index} />
                 ))) ||
                 Array.from({ length: 7 }, (_, index) => (
                   <BlogCard key={index} />
-                ))}
+                ))} */}
             </div>
           </div>
         </section>
