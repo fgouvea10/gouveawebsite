@@ -2,9 +2,9 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-export default function BlogCard() {
+export default function WorkCard() {
   return (
-    <div id={styles.blogCard}>
+    <div id={styles.workCard}>
       <div className={styles.container}>
         <img
           src="https://pagepro.co/blog/wp-content/uploads/2021/02/Nextjspicture-1.png"
@@ -16,8 +16,12 @@ export default function BlogCard() {
           reprehenderit consequatur aperiam illum voluptate
         </p>
         <div className={styles.button_container}>
-          <button type="button">Demo</button>
-          <button type="button">See study case</button>
+          <button type="button" className={styles.demo}>
+            Demo
+          </button>
+          <button type="button" className={styles.studyCase}>
+            See study case
+          </button>
         </div>
       </div>
     </div>

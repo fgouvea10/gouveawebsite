@@ -7,7 +7,7 @@ import { PostNodeProps } from '~/@types/post';
 import BlogCard from '~/components/Cards/Blog';
 import BlogCardLoading from '~/components/Cards/Blog/loadingCard';
 import Header from '~/components/Header';
-import { getPosts } from '~/services';
+import { getPosts } from '~/services/posts';
 import styles from '~/styles/posts.module.scss';
 
 type PostsProps = {
@@ -23,10 +23,6 @@ export default function Posts({ posts, notFound }: PostsProps) {
       setIsLoading(false);
     }, 3000);
   }, []);
-
-  console.log('posts?', posts);
-
-  // console.log(notFound);
 
   if (notFound) {
     return (
