@@ -1,51 +1,22 @@
-import React, { ReactNode, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { BsArrowUpRight } from 'react-icons/bs';
 
-import { motion } from 'framer-motion';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { PostNodeProps } from '~/@types/post';
 import { geometric } from '~/config/geometric';
+import { getPosts } from '~/services/posts';
 import styles from '~/styles/home.module.scss';
 
-interface FadeInProps {
-  children: ReactNode;
-}
-
-const FadeInWhenVisible = ({ children }: FadeInProps) => {
-  const [shouldShowActions, setShouldShowActions] = useState(false);
-  const [lastYPosition, setLastYPosition] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const yPosition = window.scrollY;
-      const isScrolling = yPosition > lastYPosition;
-
-      setShouldShowActions(isScrolling);
-      setLastYPosition(yPosition);
-    };
-
-    window.addEventListener('scroll', onScroll, false);
-
-    return () => {
-      window.removeEventListener('scroll', onScroll, false);
-    };
-  }, [lastYPosition]);
-
-  return (
-    <motion.div
-      className="actions"
-      animate={{ opacity: shouldShowActions ? 1 : 0 }}
-      initial={{ opacity: 0 }}
-      transition={{ opacity: { duration: 0.4 } }}
-    >
-      {children}
-    </motion.div>
-  );
+type PostProps = {
+  posts: PostNodeProps[];
+  notFound: boolean;
 };
 
-export default function Home() {
+export default function Home({ posts, notFound }: PostProps) {
   const [screenWidth, setScreenWidth] = useState(0);
 
   useLayoutEffect(() => {
@@ -72,7 +43,7 @@ export default function Home() {
         </title>
         <meta
           name="description"
-          content="Enthusiast web development and UI designer. Uniting experience and passion with a single purpose."
+          content="Web development and UI/UX enthusiast. Uniting experience and passion with a single purpose."
         />
       </Head>
 
@@ -141,107 +112,110 @@ export default function Home() {
         </section>
 
         <section id={styles.features}>
-          <FadeInWhenVisible>
-            <div className={styles.container}>
-              <div className={styles.left}>
-                <h3>Find out what I can do for you</h3>
+          <div className={styles.container}>
+            <div className={styles.left}>
+              <h3>Find out what I can do for you</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco
+              </p>
+            </div>
+
+            {screenWidth > 768 && (
+              <Image
+                src={geometric.small}
+                alt="Blue, black and white geometric shapes"
+              />
+            )}
+
+            <div className={styles.right}>
+              <div className={styles.projects_done}>
+                <div>Projects done</div>
+                <span>20</span>
+              </div>
+              <div className={styles.projects_done}>
+                <div>Projects done</div>
+                <span>20</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id={styles.blog}>
+          <div className={styles.container}>
+            <h2>Blog posts</h2>
+
+            <div className={styles.blog_card}>
+              <div className={styles.blog_img}>
+                <div />
+              </div>
+
+              <div className={styles.blog_content}>
+                <span>#UI/UX</span>
+                <h3>How to make something really nice and succeed with that</h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
                 </p>
               </div>
+            </div>
 
-              {screenWidth > 768 && (
-                <Image
-                  src={geometric.small}
-                  alt="Blue, black and white geometric shapes"
-                />
-              )}
+            <div className={styles.divider} />
 
-              <div className={styles.right}>
-                <div className={styles.projects_done}>
-                  <div>Projects done</div>
-                  <span>20</span>
-                </div>
-                <div className={styles.projects_done}>
-                  <div>Projects done</div>
-                  <span>20</span>
-                </div>
+            <div className={styles.blog_card}>
+              <div className={styles.blog_img}>
+                <div />
+              </div>
+
+              <div className={styles.blog_content}>
+                <span>#UI/UX</span>
+                <h3>How to make something really nice and succeed with that</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                </p>
               </div>
             </div>
-          </FadeInWhenVisible>
-        </section>
 
-        <section id={styles.blog}>
-          <FadeInWhenVisible>
-            <div className={styles.container}>
-              <h2>Blog posts</h2>
+            <div className={styles.divider} />
 
-              <div className={styles.blog_card}>
-                <div className={styles.blog_img}>
-                  <div />
-                </div>
-
-                <div className={styles.blog_content}>
-                  <span>#UI/UX</span>
-                  <h3>
-                    How to make something really nice and succeed with that
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco
-                  </p>
-                </div>
+            <div className={styles.blog_card}>
+              <div className={styles.blog_img}>
+                <div />
               </div>
 
-              <div className={styles.divider} />
-
-              <div className={styles.blog_card}>
-                <div className={styles.blog_img}>
-                  <div />
-                </div>
-
-                <div className={styles.blog_content}>
-                  <span>#UI/UX</span>
-                  <h3>
-                    How to make something really nice and succeed with that
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.divider} />
-
-              <div className={styles.blog_card}>
-                <div className={styles.blog_img}>
-                  <div />
-                </div>
-
-                <div className={styles.blog_content}>
-                  <span>#UI/UX</span>
-                  <h3>
-                    How to make something really nice and succeed with that
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco
-                  </p>
-                </div>
+              <div className={styles.blog_content}>
+                <span>#UI/UX</span>
+                <h3>How to make something really nice and succeed with that</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                </p>
               </div>
             </div>
-          </FadeInWhenVisible>
+          </div>
         </section>
       </main>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = (await getPosts()) || [];
+  let notFound = false;
+
+  if ((posts && posts.length <= 0) || (posts && posts === undefined)) {
+    notFound = true;
+  }
+
+  return {
+    props: {
+      posts,
+      notFound,
+    },
+  };
+};

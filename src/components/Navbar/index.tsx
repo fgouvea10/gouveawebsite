@@ -20,43 +20,26 @@ export default function Navbar() {
   };
 
   return (
-    <header id={styles.header}>
-      <div className={styles.headerContent}>
-        <Link href="/" passHref>
-          <Image src={logo.textBlack} className={styles.logo} />
-        </Link>
-
-        <nav className={`${isMenuOpen && styles.active}`}>
-          {NAVBAR_MOCK.map((item) => (
-            <Link key={item.id} href={item.route}>
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-
-        <div className={styles.right}>
+    <header className={`${styles.header} sticky-navbar`}>
+      <nav className={styles.container}>
+        <a href="#" className={styles.logo}>
+          <img src={logo.logoTextBreak} alt="gouvea" />
+        </a>
+        <div className={styles.links}>
           <ul>
-            {SOCIAL_MEDIA_MOCK.map((media) => (
-              <li key={media.id}>
-                <a href={media.route}>{media.icon}</a>
-              </li>
-            ))}
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Works</a>
+            </li>
+            <li>
+              <a href="#">Blog</a>
+            </li>
           </ul>
-
-          <button
-            className={`${styles.menu} ${isMenuOpen && styles.active}`}
-            type="button"
-            onClick={handleNavbar}
-          >
-            <div
-              className={`${styles.menuButtons} ${isMenuOpen && styles.active}`}
-            >
-              <div className={styles.first} />
-              <div className={styles.second} />
-            </div>
-          </button>
+          <button className={styles.contact}>Get in touch</button>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
