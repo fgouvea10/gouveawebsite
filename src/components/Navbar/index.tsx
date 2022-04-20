@@ -1,9 +1,4 @@
 import React, { useState } from 'react';
-import {
-  AiFillLinkedin,
-  AiOutlineBehance,
-  AiOutlineDribbble,
-} from 'react-icons/ai';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,94 +8,68 @@ import { logo } from '~/config/logo';
 import styles from './styles.module.scss';
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleNavbar = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const [isActive, setIsActive] = useState(false);
 
   return (
-    <header id={styles.header}>
-      <div className={styles.headerContent}>
-        <Link href="/" passHref>
-          <Image src={logo.textBlack} className={styles.logo} />
-        </Link>
+    <header>
+      <nav className={styles.container}>
+        <a href="/" className="logo">
+          <Image
+            src={(isActive && logo.logoTextBreakWhite) || logo.logoTextBreak}
+            alt="Gouvea logo"
+          />
+        </a>
 
-        <nav className={`${isMenuOpen && styles.active}`}>
-          {NAVBAR_MOCK.map((item) => (
-            <Link key={item.id} href={item.route}>
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-
-        <div className={styles.right}>
+        <div className={styles.links}>
           <ul>
-            {SOCIAL_MEDIA_MOCK.map((media) => (
-              <li key={media.id}>
-                <a href={media.route}>{media.icon}</a>
+            {NAVBAR_MOCK.map((item, index) => (
+              <li key={index} className={styles['nav-link']}>
+                <Link href={item.route} passHref>
+                  {item.name}
+                </Link>
               </li>
             ))}
           </ul>
-
-          <button
-            className={`${styles.menu} ${isMenuOpen && styles.active}`}
-            type="button"
-            onClick={handleNavbar}
-          >
-            <div
-              className={`${styles.menuButtons} ${isMenuOpen && styles.active}`}
+          <button type="button" className={styles.btn}>
+            Get in touch
+            <svg
+              width="46"
+              height="13"
+              viewBox="0 0 46 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <div className={styles.first} />
-              <div className={styles.second} />
-            </div>
+              <path d="M0 6.5H44" stroke="black" />
+              <path d="M45 6L38 12M45 6.5L38 1" stroke="black" />
+            </svg>
           </button>
         </div>
-      </div>
+        <div
+          className="toggle-menu"
+          onClick={() => {
+            document.body.classList.toggle('active');
+            setIsActive(!isActive);
+          }}
+        >
+          <div className="bar" />
+          <div className="bar" />
+        </div>
+      </nav>
     </header>
   );
 }
 
 const NAVBAR_MOCK = [
   {
-    id: 1,
-    name: 'About',
-    route: '/about',
+    name: 'Home',
+    route: '/',
   },
   {
-    id: 2,
     name: 'Works',
     route: '/works',
   },
   {
-    id: 3,
     name: 'Blog',
-    route: '/posts',
-  },
-  {
-    id: 4,
-    name: 'Contact',
-    route: '/contact',
-  },
-];
-
-const SOCIAL_MEDIA_MOCK = [
-  {
-    id: 1,
-    name: 'LinkedIn',
-    route: 'https://linkedin.com/in/fgouvea10',
-    icon: <AiFillLinkedin />,
-  },
-  {
-    id: 2,
-    name: 'Behance',
-    route: 'https://behance.net/gouvea',
-    icon: <AiOutlineBehance />,
-  },
-  {
-    id: 3,
-    name: 'Dribbble',
-    route: 'https://dribbble.com/fgouvea10',
-    icon: <AiOutlineDribbble />,
+    route: '/blog',
   },
 ];

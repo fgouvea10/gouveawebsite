@@ -1,191 +1,69 @@
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-#header {
-  height: 5rem;
-}
-
-.headerContent {
-  width: 100%;
-  max-width: 1662px;
-  height: 5rem;
-  margin: 0 auto;
-  padding: 0 var(--4xl);
+.container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 75rem;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+}
+
+.links {
+  flex: 1;
+  display: flex;
   justify-content: space-between;
+}
 
-  > span {
-    cursor: pointer;
-    width: 100px !important;
-    height: auto;
+.links ul {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-link {
+  display: inline-block;
+  margin: 0 1rem;
+  font-weight: 400;
+}
+
+.btn {
+  background: transparent;
+  border: none;
+  color: var(--dark-color);
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .links {
+    order: 3;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0 2rem;
   }
 
-  .menu {
-    width: var(--5xl);
-    height: auto;
+  .links ul {
+    flex-direction: column;
   }
 
-  .menuButtons {
-    width: auto;
-    height: auto;
-    padding: var(--sm) 0 var(--sm) 0;
-
-    .first {
-      width: 20px;
-      height: 3px;
-      background: var(--title-color);
-      margin-bottom: 5px;
-      display: block;
-      transition: 0.3s all;
-    }
-
-    .second {
-      width: 20px;
-      height: 3px;
-      background: var(--title-color);
-      margin: 0 0;
-      transition: 0.3s all;
-    }
+  .nav-link {
+    margin: 1rem 0;
   }
 
-  .menuButtons.active .first {
-    transform: rotate(45deg);
-    background: var(--body-color);
-    margin-bottom: -3px;
-  }
-  .menuButtons.active .second {
-    transform: rotate(-45deg);
-    background: var(--body-color);
+  :is(.nav-link a, .btn) {
+    color: var(--text-color-light);
+    font-size: 1.5rem;
   }
 
-  nav {
-    height: 5rem;
-
-    a {
-      display: inline-block;
-      position: relative;
-      padding: 0 0.5rem;
-      height: 5rem;
-      line-height: 5rem;
-      transition: color 0.2s;
-
-      & + a {
-        margin-left: var(--4xl);
-      }
-
-      &:hover {
-        color: var(--base-color);
-      }
-    }
-  }
-
-  .right {
-    ul {
-      display: flex;
-    }
-
-    li + li {
-      margin-left: var(--md);
-    }
-
-    a {
-      font-size: var(--xl);
-      height: 5rem;
-    }
-  }
-
-  button {
-    display: none;
-    position: absolute;
-    right: var(--sm);
-    top: 7px;
-    padding: var(--md) 2rem;
-  }
-
-  @media (max-width: 900px) {
-    padding: var(--md) 2rem;
-
-    button {
-      display: block;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      background: transparent;
-    }
-
-    .right ul {
-      display: none;
-    }
-
-    .right {
-      z-index: 2;
-    }
-
-    nav {
-      position: fixed;
-      left: 0;
-      top: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 0vh;
-      overflow: hidden;
-      background: #000;
-      animation: fadeIn 1s ease forwards;
-      -webkit-animation: fadeInOut 5s forwards;
-      -moz-animation: fadeInOut 5s forwards;
-      -o-animation: fadeInOut 5s forwards;
-      transition: 0.6s all;
-      z-index: 1;
-
-      &.active {
-        height: 100vh;
-      }
-
-      a {
-        color: var(--body-color);
-        font-size: var(--5xl);
-        width: 100%;
-        text-align: center;
-
-        & + a {
-          margin-left: 0;
-        }
-
-        &.active {
-          font-weight: var(--semibold);
-        }
-      }
-    }
+  .btn {
+    margin-top: 2rem;
+    display: block;
+    align-items: center;  
+    justify-content: center;
   }
 }
