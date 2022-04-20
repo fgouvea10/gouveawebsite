@@ -26,15 +26,10 @@
   font-weight: 400;
 }
 
-.nav-link:hover {
-  color: red;
-}
-
 .btn {
   background: transparent;
   border: none;
   color: var(--dark-color);
-  // width: 20%;
   min-width: 200px;
   display: flex;
   align-items: center;
@@ -60,8 +55,15 @@
     margin: 1rem 0;
   }
 
-  .nav-link a {
+  :is(.nav-link a, .btn) {
     color: var(--text-color-light);
     font-size: 1.5rem;
+  }
+
+  .btn {
+    margin-top: 2rem;
+    display: block;
+    align-items: center;  
+    justify-content: center;
   }
 }

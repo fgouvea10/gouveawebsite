@@ -1,41 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
-import { icon } from '~/config/icon';
 import { logo } from '~/config/logo';
 
 import styles from './styles.module.scss';
 
 export default function Navbar() {
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <header>
       <nav className={styles.container}>
-        <a href="#" className="logo">
-          <Image src={logo.logoTextBreak} alt="gouvea logo" />
+        <a href="/" className="logo">
+          <Image
+            src={(isActive && logo.logoTextBreakWhite) || logo.logoTextBreak}
+            alt="Gouvea logo"
+          />
         </a>
 
         <div className={styles.links}>
           <ul>
-            <li className={styles['nav-link']}>
-              <a href="#">Home</a>
-            </li>
-            <li className={styles['nav-link']}>
-              <a href="#">Works</a>
-            </li>
-            <li className={styles['nav-link']}>
-              <a href="#">Blog</a>
-            </li>
+            {NAVBAR_MOCK.map((item, index) => (
+              <li key={index} className={styles['nav-link']}>
+                <Link href={item.route} passHref>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
           <button type="button" className={styles.btn}>
             Get in touch
-            <Image src={icon.arrowRight} alt="Arrow right" />
+            <svg
+              width="46"
+              height="13"
+              viewBox="0 0 46 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 6.5H44" stroke="black" />
+              <path d="M45 6L38 12M45 6.5L38 1" stroke="black" />
+            </svg>
           </button>
         </div>
         <div
           className="toggle-menu"
           onClick={() => {
             document.body.classList.toggle('active');
+            setIsActive(!isActive);
           }}
         >
           <div className="bar" />
@@ -48,23 +61,15 @@ export default function Navbar() {
 
 const NAVBAR_MOCK = [
   {
-    id: 1,
-    name: 'About',
-    route: '/about',
+    name: 'Home',
+    route: '/',
   },
   {
-    id: 2,
     name: 'Works',
     route: '/works',
   },
   {
-    id: 3,
     name: 'Blog',
-    route: '/posts',
-  },
-  {
-    id: 4,
-    name: 'Contact',
-    route: '/contact',
+    route: '/blog',
   },
 ];
