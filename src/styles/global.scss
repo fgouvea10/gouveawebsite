@@ -140,6 +140,7 @@ body.active .toggle-menu .bar:last-child {
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 a {
@@ -162,6 +163,30 @@ li {
 .section {
   position: relative;
   padding: var(--section-padding) 0;
+}
+
+.primary {
+  background: var(--dark-color);
+  padding: 1.5rem 3rem;
+  font-size: 0.825rem;
+  color: var(--text-color-light);
+  font-weight: 600;
+}
+
+.secondary {
+  border: 1px solid var(--dark-color);
+  background: transparent;
+  padding: 1.5rem 3rem;
+  font-size: 0.825rem;
+  color: var(--dark-color);
+  font-weight: 600;
+}
+
+.test {
+  width: 100px;
+  height: 2px;
+  border-radius: 10px;
+  background: var(--dark-color);
 }
 
 @media (max-width: 768px) {
