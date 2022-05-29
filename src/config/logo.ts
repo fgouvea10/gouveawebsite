@@ -5,7 +5,6 @@ import logoIconWhite from '../../public/images/logos/logo_icon_white.svg';
 import logoTextBlack from '../../public/images/logos/logo_text_black.svg';
 import logoTextWhite from '../../public/images/logos/logo_text_white.svg';
 import logoTextBreak from '../../public/images/logos/logoTextBreak.svg';
-import logoTextBreakWhite from '../../public/images/logos/logoTextBreakWhite.svg';
 
 export const logo = {
   textBlack: logoTextBlack,
@@ -15,5 +14,4 @@ export const logo = {
   iconTextBlack: logoIconTextBlack,
   iconTextWhite: logoIconTextWhite,
   logoTextBreak,
-  logoTextBreakWhite,
 };
