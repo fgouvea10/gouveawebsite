@@ -1,56 +1,16 @@
-import React from 'react';
+import type { NextPage } from "next";
 
-import Head from 'next/head';
+import Head from "next/head";
 
-import styles from '~/styles/home.module.scss';
-
-export default function Home() {
+export default function App() {
   return (
     <>
       <Head>
-        <title>
-          Building digital products, interfaces and experiences - Felipe Gouvea
-        </title>
-        <meta
-          name="description"
-          content="Web development and UI/UX enthusiast. Uniting experience and passion with a single purpose."
-        />
+        <title>Felipe Gouvea</title>
       </Head>
 
-      <main>
-        <section className={`${styles.landing} section`}>
-          <div className="container">
-            <div className={styles.texts}>
-              <h1>
-                I believe that
-                <br />
-              </h1>
-              <h1>
-                development can
-                <br />
-              </h1>
-              <h1>
-                solve problems
-                <br />
-              </h1>
-            </div>
-
-            <div className={styles.bio}>
-              I bring together science and art to create a <b>brand</b> and{' '}
-              <b>website</b> projects that makes difference in your business
-            </div>
-
-            <div className={styles['button-container']}>
-              <button type="button" className="primary">
-                check out my porfolio
-              </button>
-
-              <button type="button" className="secondary">
-                say hello
-              </button>
-            </div>
-          </div>
-        </section>
+      <main className="w-screen h-screen flex items-center justify-center bg-neutral-900">
+        <h1 className="text-neutral-200">New version comming soon...</h1>
       </main>
     </>
   );
