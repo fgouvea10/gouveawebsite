@@ -29,7 +29,7 @@ const Home: NextPage = () => {
           align="center"
           spacing={{ base: 20, md: 28 }}
           direction={{ base: 'column', md: 'row' }}
-          mt={150}
+          mt={{ base: 10, md: 150 }}
         >
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
             <Heading
