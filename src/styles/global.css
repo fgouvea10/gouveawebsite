@@ -1,0 +1,63 @@
+:root {
+  --white: #ffffff;
+  --gray-900: #0e0d0d;
+  --gray-800: #141212;
+  --gray-600: #303030;
+  --gray-300: #c9c8c8;
+
+  --red-100: #685a5a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--gray-900);
+  color: var(--gray-300);
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+input,
+textarea,
+button {
+  font: 300 1rem 'Epilogue', sans-serif;
+}
+
+::-moz-selection {
+  background: var(--gray-800);
+  color: var(--white);
+}
+
+::selection {
+  background: var(--gray-800);
+  color: var(--white);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 87.5%;
+  }
+}
