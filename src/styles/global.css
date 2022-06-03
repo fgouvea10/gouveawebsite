@@ -1,5 +1,6 @@
 :root {
   --white: #ffffff;
+
   --gray-900: #0e0d0d;
   --gray-800: #141212;
   --gray-600: #303030;
@@ -28,13 +29,13 @@ button {
 }
 
 ::-moz-selection {
-  background: var(--gray-800);
-  color: var(--white);
+  color: var(--gray-800);
+  background: var(--white);
 }
 
 ::selection {
-  background: var(--gray-800);
-  color: var(--white);
+  color: var(--gray-800);
+  background: var(--white);
 }
 
 a {

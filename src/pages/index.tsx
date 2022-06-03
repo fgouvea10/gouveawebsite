@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import styles from 'styles/modules/Home.module.css';
-import { WorkCard } from 'components/shared';
+import { BlogCard, WorkCard } from 'components/shared';
 
 const Home: NextPage = () => {
   return (
@@ -69,6 +69,16 @@ const Home: NextPage = () => {
               <div className={styles['large-dark-area-right']}>
                 <WorkCard alignment="right" theme="dark" />
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.posts}>
+          <div className={styles.container}>
+            <div className={styles['grid-container']}>
+              <BlogCard />
+              <BlogCard />
+              <BlogCard />
             </div>
           </div>
         </section>

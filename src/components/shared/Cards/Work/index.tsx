@@ -16,7 +16,11 @@ export function WorkCard({
   work,
 }: WorkCardsProps) {
   return (
-    <article className={`${styles['work-card']}`}>
+    <article
+      className={`${
+        styles[theme === 'dark' ? 'work-card-dark' : 'work-card-light']
+      }`}
+    >
       <div
         className={`${
           styles[alignment === 'left' ? 'left-alignment' : 'right-alignment']
@@ -35,11 +39,33 @@ export function WorkCard({
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
           pariatur reiciendis, perspiciatis nostrum soluta odio harum
         </p>
-        <div className={`${styles['button-container']}`}>
-          <button type="button" className={styles.primary}>
+        <div
+          className={`${
+            styles[
+              alignment === 'left'
+                ? 'button-container-left'
+                : 'button-container-right'
+            ]
+          }`}
+        >
+          <button
+            type="button"
+            className={
+              theme === 'dark'
+                ? styles['primary-dark']
+                : styles['primary-light']
+            }
+          >
             preview
           </button>
-          <button type="button" className={styles.secondary}>
+          <button
+            type="button"
+            className={
+              theme === 'dark'
+                ? styles['secondary-dark']
+                : styles['secondary-light']
+            }
+          >
             see study case
           </button>
         </div>
