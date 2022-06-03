@@ -109,11 +109,15 @@
 
 @media (max-width: 70rem) {
   .header {
-    padding: 2rem 1rem;
+    padding: 1rem 2rem;
   }
 }
 
 @media (max-width: 768px) {
+  .header {
+    margin: 2rem auto;
+  }
+
   #menu {
     justify-content: center;
   }
