@@ -3,18 +3,34 @@ import { BsBehance } from 'react-icons/bs';
 import { FaLinkedin } from 'react-icons/fa';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
+
+import { useState } from 'react';
 
 import { logoConfig } from 'config/logo';
 
 import styles from './Header.module.css';
 
 export function Header() {
+  const [isMenuActive, setIsMenuActive] = useState(false);
+
+  const router = useRouter();
+
   const { logoTextWhite: gouveaLogo } = logoConfig;
+  const classMenu = isMenuActive ? `${styles['active']}` : '';
+  const classButtons = isMenuActive ? `${styles['active']}` : '';
+  const classContent = isMenuActive ? 'fade-in' : 'fade-out';
 
   return (
     <header className={styles.header}>
-      <Image src={gouveaLogo} alt="gouvea logotype" width={107} height={22} />
+      <Image
+        src={gouveaLogo}
+        alt="gouvea logotype"
+        width={107}
+        height={22}
+        style={{ zIndex: 6 }}
+      />
       <div className={styles.navbar}>
         <div className={`${styles['nav-icons']}`}>
           {HEADER_MOCK.social_media.map((item, index) => (
@@ -27,11 +43,34 @@ export function Header() {
               {item.icon}
             </Link>
           ))}
-          <button className={styles.menu} type="button">
+          <button
+            className={`${styles.menutrigger} ${classButtons}`}
+            onClick={() => setIsMenuActive(!isMenuActive)}
+            type="button"
+          >
             <div className={styles.bar} />
             <div className={styles.bar} />
           </button>
         </div>
+      </div>
+      <div id={styles.menu} className={classMenu}>
+        <nav className={`${styles.items} ${classContent}`}>
+          <ul>
+            {HEADER_MOCK.links.map((item, index) => (
+              <li
+                className={
+                  router.pathname === item.path
+                    ? `${styles['active-link']}`
+                    : ''
+                }
+              >
+                <Link key={String(index + 1)} href={item.path}>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </header>
   );
