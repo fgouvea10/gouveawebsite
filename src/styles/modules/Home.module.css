@@ -1,7 +1,7 @@
 .main {
   width: 100vw;
   max-width: 70rem;
-  margin: 13rem auto;
+  margin: 7rem auto;
 }
 
 .hero {
@@ -96,16 +96,17 @@
 
 @media (max-width: 62rem) {
   .main {
-    margin: 6rem auto;
+    margin: 3rem auto;
   }
 
   .grid-container {
     grid-template-areas:
-    'landing'
-    'floating';
+      'landing'
+      'floating';
   }
 
-  .grid-container .landing h1, .grid-container .landing p {
+  .grid-container .landing h1,
+  .grid-container .landing p {
     max-width: 100%;
     text-align: center;
   }

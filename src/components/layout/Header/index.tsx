@@ -47,6 +47,7 @@ export function Header() {
             className={`${styles.menutrigger} ${classButtons}`}
             onClick={() => setIsMenuActive(!isMenuActive)}
             type="button"
+            aria-label="Toggle menu"
           >
             <div className={styles.bar} />
             <div className={styles.bar} />
@@ -58,6 +59,7 @@ export function Header() {
           <ul>
             {HEADER_MOCK.links.map((item, index) => (
               <li
+                key={String(index + 1)}
                 className={
                   router.pathname === item.path
                     ? `${styles['active-link']}`
