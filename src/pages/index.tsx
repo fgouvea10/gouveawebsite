@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import styles from 'styles/modules/Home.module.css';
+import { WorkCard } from 'components/shared';
 
 const Home: NextPage = () => {
   return (
@@ -48,6 +49,25 @@ const Home: NextPage = () => {
                     <FiArrowRight />
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.works}>
+          <div className={styles.container}>
+            <div className={`${styles['grid-container']}`}>
+              <div className={styles['large-dark-area-left']}>
+                <WorkCard alignment="left" theme="dark" />
+              </div>
+              <div className={styles['small-white-area-right']}>
+                <WorkCard alignment="right" theme="light" />
+              </div>
+              <div className={styles['small-white-area-left']}>
+                <WorkCard alignment="left" theme="light" />
+              </div>
+              <div className={styles['large-dark-area-right']}>
+                <WorkCard alignment="right" theme="dark" />
               </div>
             </div>
           </div>
