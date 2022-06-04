@@ -90,13 +90,13 @@ const Home: NextPage = () => {
                   my works
                 </button>
               </div>
-              <div className={`${styles['floating-button']}`}>
+              {/* <div className={`${styles['floating-button']}`}>
                 <div className={styles.flexEnd}>
                   <button type="button" aria-label="get in touch">
                     <FiArrowRight />
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
