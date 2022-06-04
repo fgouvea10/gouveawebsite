@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { FiInstagram } from 'react-icons/fi';
 import { BsBehance } from 'react-icons/bs';
 import { FaLinkedin } from 'react-icons/fa';
@@ -6,7 +7,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import { useState } from 'react';
 
 import { logoConfig } from 'config/logo';
 
@@ -15,6 +15,8 @@ import styles from './Header.module.css';
 export function Header() {
   const [isMenuActive, setIsMenuActive] = useState(false);
 
+  const headerRef = useRef(null);
+
   const router = useRouter();
 
   const { logoTextWhite: gouveaLogo } = logoConfig;
@@ -22,8 +24,24 @@ export function Header() {
   const classButtons = isMenuActive ? `${styles['active']}` : '';
   const classContent = isMenuActive ? 'fade-in' : 'fade-out';
 
+  useEffect(() => {
+    const animateHeader = async () => {
+      if (headerRef.current) {
+        const scrollReveal = (await import('scrollreveal')).default;
+        scrollReveal().reveal(headerRef.current, {
+          reset: false,
+          delay: 500,
+          scale: 1,
+          easing: 'ease-in',
+        });
+      }
+    };
+
+    animateHeader();
+  }, []);
+
   return (
-    <header className={styles.header}>
+    <header ref={headerRef} className={styles.header}>
       <Image
         src={gouveaLogo}
         alt="gouvea logotype"

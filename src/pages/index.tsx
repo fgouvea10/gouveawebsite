@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 
 import type { NextPage } from 'next';
@@ -7,6 +8,52 @@ import styles from 'styles/modules/Home.module.css';
 import { BlogCard, WorkCard } from 'components/shared';
 
 const Home: NextPage = () => {
+  const heroSection = useRef(null);
+  const worksSection = useRef(null);
+  const postsSection = useRef(null);
+
+  useEffect(() => {
+    const animateHeroSection = async () => {
+      if (heroSection.current) {
+        const scrollReveal = (await import('scrollreveal')).default;
+        scrollReveal().reveal(heroSection.current, {
+          reset: false,
+          delay: 500,
+          scale: 1,
+          easing: 'ease-in',
+        });
+      }
+    };
+
+    const animateWorksSection = async () => {
+      if (worksSection.current) {
+        const scrollReveal = (await import('scrollreveal')).default;
+        scrollReveal().reveal(worksSection.current, {
+          reset: false,
+          delay: 500,
+          scale: 1,
+          easing: 'ease-in',
+        });
+      }
+    };
+
+    const animatePostsSection = async () => {
+      if (postsSection.current) {
+        const scrollReveal = (await import('scrollreveal')).default;
+        scrollReveal().reveal(postsSection.current, {
+          reset: false,
+          delay: 500,
+          scale: 1,
+          easing: 'ease-in',
+        });
+      }
+    };
+
+    animateHeroSection();
+    animateWorksSection();
+    animatePostsSection();
+  }, []);
+
   return (
     <>
       <Head>
@@ -26,7 +73,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <section className={styles.hero}>
+        <section id="hero" ref={heroSection} className={styles.hero}>
           <div className={styles.container}>
             <div className={`${styles['grid-container']}`}>
               {/* <div className={styles.copy}>
@@ -54,7 +101,7 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section className={styles.works}>
+        <section id="works" ref={worksSection} className={styles.works}>
           <div className={styles.container}>
             <div className={`${styles['grid-container']}`}>
               <div className={styles['large-dark-area-left']}>
@@ -73,7 +120,7 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section className={styles.posts}>
+        <section id="posts" ref={postsSection} className={styles.posts}>
           <div className={styles.container}>
             <div className={styles['grid-container']}>
               <BlogCard />
