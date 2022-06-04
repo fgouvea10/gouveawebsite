@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-
 import { logoConfig } from 'config/logo';
 
 import styles from './Header.module.css';
@@ -83,8 +82,12 @@ export function Header() {
                     ? `${styles['active-link']}`
                     : ''
                 }
+                onClick={() => setIsMenuActive(!isMenuActive)}
               >
-                <Link key={String(index + 1)} href={item.path}>
+                <Link
+                  key={String(index + 1)}
+                  href={item.path}
+                >
                   {item.name}
                 </Link>
               </li>
