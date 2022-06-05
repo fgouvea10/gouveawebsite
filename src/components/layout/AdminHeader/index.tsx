@@ -53,7 +53,7 @@ export function AdminHeader({
         <div className={styles['user-info']}>
           <div className={styles['flex-column']}>
             <strong>Felipe Gouvea</strong>
-            <span>admin</span>
+            <span>Admin</span>
           </div>
           <div className={styles['user-picture']}>FG</div>
         </div>
