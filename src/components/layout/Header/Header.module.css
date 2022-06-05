@@ -33,6 +33,7 @@
   background: transparent;
   border: none;
   display: block;
+  padding: 5px 5px;
 }
 
 .menutrigger .bar {

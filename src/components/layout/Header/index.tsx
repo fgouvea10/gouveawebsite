@@ -41,13 +41,15 @@ export function Header() {
 
   return (
     <header ref={headerRef} className={styles.header}>
-      <Image
-        src={gouveaLogo}
-        alt="gouvea logotype"
-        width={107}
-        height={22}
-        style={{ zIndex: 6 }}
-      />
+      <Link href="/">
+        <Image
+          src={gouveaLogo}
+          alt="gouvea logotype"
+          width={107}
+          height={22}
+          style={{ zIndex: 6, cursor: 'pointer' }}
+        />
+      </Link>
       <div className={styles.navbar}>
         <div className={`${styles['nav-icons']}`}>
           {HEADER_MOCK.social_media.map((item, index) => (
@@ -84,10 +86,7 @@ export function Header() {
                 }
                 onClick={() => setIsMenuActive(!isMenuActive)}
               >
-                <Link
-                  key={String(index + 1)}
-                  href={item.path}
-                >
+                <Link key={String(index + 1)} href={item.path}>
                   {item.name}
                 </Link>
               </li>

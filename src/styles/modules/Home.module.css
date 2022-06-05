@@ -79,7 +79,13 @@
   text-align: center;
 }
 
-.grid-container .landing button {
+.grid-container .landing .button-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.grid-container .landing .button-container .primary {
   width: 300px;
   padding: 1.5rem 0;
   background: var(--white);
@@ -91,8 +97,38 @@
   transition: filter 0.3s;
 }
 
-.grid-container .landing button:hover {
+.grid-container .landing .button-container .secondary {
+  width: 300px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  color: var(--gray-300);
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 400;
+  border: none;
+  transition: all 0.3s;
+  /* transition-property: color, transform;
+  transition-duration: 0.3s, 0.3s; */
+  transition: color 0.3s;
+}
+
+.grid-container .landing .button-container .secondary img {
+  transition: transform 0.4s;
+}
+
+.grid-container .landing .button-container .primary:hover {
   filter: opacity(0.8);
+}
+
+.grid-container .landing .button-container .secondary:hover {
+  color: var(--white);
+}
+
+.grid-container .landing .button-container .secondary:hover > img {
+  transform: translateX(1rem);
 }
 
 .grid-container .floating-button {
