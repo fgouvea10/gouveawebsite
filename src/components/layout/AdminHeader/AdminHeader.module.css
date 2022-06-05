@@ -54,3 +54,9 @@
   -webkit-user-select: none;
   -o-user-select: none;
 }
+
+@media (max-width: 70rem) {
+  .header {
+    padding: 1rem 2rem;
+  }
+}

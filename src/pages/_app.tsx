@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const shouldDisplayUserInfo = [
-    '/admin/',
+    '/admin',
     '/admin/works',
     '/admin/works/create',
     '/admin/posts',
