@@ -212,9 +212,10 @@
 
   .grid-container .landing .button-container {
     flex-direction: column;
+    width: 100%;
   }
 
-  .grid-container .landing .primary, .grid-container .landing .secondary {
+  .grid-container .landing .button-container .primary {
     width: 100%;
   }
 
