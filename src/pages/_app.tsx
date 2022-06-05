@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 
-import { Header, Footer } from 'components/layout';
+import { Header, Footer, AdminHeader } from 'components/layout';
 
 import 'styles/global.css';
-import { AdminHeader } from 'components/layout/AdminHeader';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
