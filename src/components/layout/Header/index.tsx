@@ -86,7 +86,7 @@ export function Header() {
                 }
                 onClick={() => setIsMenuActive(!isMenuActive)}
               >
-                <Link key={String(index + 1)} href={item.path}>
+                <Link key={String(index + 1)} href={item.path} target="_blank">
                   {item.name}
                 </Link>
               </li>
