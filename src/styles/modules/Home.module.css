@@ -200,8 +200,8 @@
 
   .grid-container {
     grid-template-areas:
-      'landing'
-      'floating';
+      'landing';
+      /* 'floating'; */
   }
 
   .grid-container .landing h1,
@@ -210,26 +210,26 @@
     text-align: center;
   }
 
-  .grid-container .landing button {
+  .grid-container .landing .button-container {
+    flex-direction: column;
+  }
+
+  .grid-container .landing .primary, .grid-container .landing .secondary {
     width: 100%;
   }
 
-  .grid-container .floating-button button {
+  .grid-container .landing .button-container .secondary {
     border: 1px solid var(--white);
     color: var(--white);
     background: transparent;
     width: 100%;
     padding: 1.5rem 0;
+    display: grid;
+    place-items: center;
   }
 
-  .grid-container .floating-button button svg {
+  .grid-container .landing .button-container .secondary img {
     display: none;
-  }
-
-  .grid-container .floating-button button::before {
-    content: 'get in touch';
-    top: 0;
-    left: 0;
   }
 
   .works .grid-container {
