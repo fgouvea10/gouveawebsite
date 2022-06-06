@@ -33,6 +33,7 @@
   background: transparent;
   border: none;
   display: block;
+  padding: 5px 5px;
 }
 
 .menutrigger .bar {
@@ -72,10 +73,12 @@
 
 #menu .items {
   transform: translateY(-50px);
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 #menu .items ul {
-  padding: 0 4rem;
   display: flex;
   flex-direction: column;
   row-gap: 2rem;

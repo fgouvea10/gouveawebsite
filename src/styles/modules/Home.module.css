@@ -22,10 +22,11 @@
   width: 100%;
   display: grid;
   /* grid-template-areas: 'copy landing floating'; */
-  grid-template-areas: 'landing floating';
+  /* grid-template-areas: 'landing floating'; */
+  grid-template-areas: 'landing';
   place-items: center;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1.5rem;
 }
 
@@ -53,17 +54,20 @@
   width: 100%;
   grid-area: landing;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 2rem;
 }
 
 .grid-container .landing h1 {
-  max-width: 800px;
+  max-width: 1120px;
   font-weight: 400;
   font-size: 4.875em;
   line-height: 3.875rem;
   letter-spacing: -0.065em;
   color: var(--white);
+  text-align: center;
 }
 
 .grid-container .landing p {
@@ -71,10 +75,17 @@
   font-size: 1em;
   line-height: 1.5rem;
   color: var(--gray-300);
-  max-width: 500px;
+  max-width: 800px;
+  text-align: center;
 }
 
-.grid-container .landing button {
+.grid-container .landing .button-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.grid-container .landing .button-container .primary {
   width: 300px;
   padding: 1.5rem 0;
   background: var(--white);
@@ -86,8 +97,38 @@
   transition: filter 0.3s;
 }
 
-.grid-container .landing button:hover {
+.grid-container .landing .button-container .secondary {
+  width: 300px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  color: var(--gray-300);
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 400;
+  border: none;
+  transition: all 0.3s;
+  /* transition-property: color, transform;
+  transition-duration: 0.3s, 0.3s; */
+  transition: color 0.3s;
+}
+
+.grid-container .landing .button-container .secondary img {
+  transition: transform 0.4s;
+}
+
+.grid-container .landing .button-container .primary:hover {
   filter: opacity(0.8);
+}
+
+.grid-container .landing .button-container .secondary:hover {
+  color: var(--white);
+}
+
+.grid-container .landing .button-container .secondary:hover > img {
+  transform: translateX(1rem);
 }
 
 .grid-container .floating-button {
@@ -159,8 +200,8 @@
 
   .grid-container {
     grid-template-areas:
-      'landing'
-      'floating';
+      'landing';
+      /* 'floating'; */
   }
 
   .grid-container .landing h1,
@@ -169,26 +210,27 @@
     text-align: center;
   }
 
-  .grid-container .landing button {
+  .grid-container .landing .button-container {
+    flex-direction: column;
     width: 100%;
   }
 
-  .grid-container .floating-button button {
+  .grid-container .landing .button-container .primary {
+    width: 100%;
+  }
+
+  .grid-container .landing .button-container .secondary {
     border: 1px solid var(--white);
     color: var(--white);
     background: transparent;
     width: 100%;
     padding: 1.5rem 0;
+    display: grid;
+    place-items: center;
   }
 
-  .grid-container .floating-button button svg {
+  .grid-container .landing .button-container .secondary img {
     display: none;
-  }
-
-  .grid-container .floating-button button::before {
-    content: 'get in touch';
-    top: 0;
-    left: 0;
   }
 
   .works .grid-container {

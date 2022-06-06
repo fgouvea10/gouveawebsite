@@ -1,13 +1,16 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
-import { FiArrowRight } from 'react-icons/fi';
+import { useEffect, useRef } from 'react';
 
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import styles from 'styles/modules/Home.module.css';
 import { BlogCard, WorkCard } from 'components/shared';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   const heroSection = useRef(null);
   const worksSection = useRef(null);
   const postsSection = useRef(null);
@@ -60,7 +63,7 @@ const Home: NextPage = () => {
         <title>Home - Felipe Gouvea</title>
         <meta
           name="description"
-          content="I'm a UI/UX designer and web developer. I like to combine my experience with the job market with what I most enjoy doing: developing things that make people happy. Get in touch and let's make your idea become the BIG IDEA"
+          content="I'm a UI/UX designer and web developer who likes to combine my experience with the job market with what I most enjoy doing: developing things that make people happy. Get in touch and let's make your idea become the BIG IDEA"
         />
         <meta
           property="og:image"
@@ -83,20 +86,35 @@ const Home: NextPage = () => {
               <div className={styles.landing}>
                 <h1>uniting experience and passion with a single purpose</h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                  I'm a UI/UX designer and web developer who likes to combine my
+                  experience with the job market with what I most enjoy doing:
+                  developing things that make people happy
                 </p>
-                <button type="button" aria-label="my works">
-                  my works
-                </button>
+                <div className={styles['button-container']}>
+                  <button
+                    type="button"
+                    aria-label="my works"
+                    className={styles.primary}
+                    onClick={() => router.push('/works')}
+                  >
+                    check out my works
+                  </button>
+                  <a
+                    href="mailto:hey@felipegouvea.com"
+                    aria-label="my works"
+                    className={styles.secondary}
+                  >
+                    or we can talk <img src="/images/whiteArrow.png" />
+                  </a>
+                </div>
               </div>
-              <div className={`${styles['floating-button']}`}>
+              {/* <div className={`${styles['floating-button']}`}>
                 <div className={styles.flexEnd}>
                   <button type="button" aria-label="get in touch">
                     <FiArrowRight />
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
