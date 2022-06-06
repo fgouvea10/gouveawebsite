@@ -13,7 +13,7 @@ import { IRepositoriesDTO } from 'dtos/IRepositoriesDTO';
 import { formatDate } from 'utils/formatDate';
 
 const Works: NextPage = () => {
-  const { data: repositories } = useFetch<IRepositoriesDTO[]>(
+  const { data: repositories, isFetching } = useFetch<IRepositoriesDTO[]>(
     'repositories',
     async () => {
       const response = await axios.get(
@@ -58,30 +58,37 @@ const Works: NextPage = () => {
           <div className={styles.container}>
             <h2>Git repositories</h2>
             <div className={styles['git-cards']}>
-              {repositories?.map((repository: IRepositoriesDTO) => (
-                <Link key={repository.id} href={repository.html_url}>
-                  <div className={styles['git-card']}>
-                    <div className={styles['git-card-header']}>
-                      <div className={styles['git-card-content']}>
-                        <time>{formatDate(repository.created_at)}</time>
-                      </div>
-                      <div className={styles.divider} />
-                    </div>
-                    <div className={styles['git-card-body']}>
-                      <div className={styles['git-card-content']}>
-                        <div className={styles.picture}>
-                          <img
-                            src="/images/git.png"
-                            alt="Drawing of a cat above the water"
-                          />
+              {isFetching
+                ? Array.from({ length: 3 }, (_, index) => (
+                    <div
+                      key={String(index + 1)}
+                      className={styles['git-skeleton-loading']}
+                    />
+                  ))
+                : repositories?.map((repository: IRepositoriesDTO) => (
+                    <Link key={repository.id} href={repository.html_url}>
+                      <div className={styles['git-card']}>
+                        <div className={styles['git-card-header']}>
+                          <div className={styles['git-card-content']}>
+                            <time>{formatDate(repository.created_at)}</time>
+                          </div>
+                          <div className={styles.divider} />
                         </div>
-                        <strong>{repository.name}</strong>
-                        <p>{repository.description ?? '-'}</p>
+                        <div className={styles['git-card-body']}>
+                          <div className={styles['git-card-content']}>
+                            <div className={styles.picture}>
+                              <img
+                                src="/images/git.png"
+                                alt="Drawing of a cat above the water"
+                              />
+                            </div>
+                            <strong>{repository.name}</strong>
+                            <p>{repository.description ?? '-'}</p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                    </Link>
+                  ))}
             </div>
           </div>
         </section>
