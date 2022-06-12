@@ -1,14 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { logoConfig } from 'config/logo';
 
 import styles from './AdminHeader.module.css';
-import { useAuth } from 'hooks/auth';
 import { getInitials } from 'utils/getInitials';
+
+type User = {
+  id: string;
+  email: string;
+  name: string;
+  password: string;
+};
 
 type AdminHeaderProps = {
   shouldDisplayUserInfo?: boolean;
@@ -17,12 +22,8 @@ type AdminHeaderProps = {
 export function AdminHeader({
   shouldDisplayUserInfo = false,
 }: AdminHeaderProps) {
+  const [user, setUser] = useState<User>({} as User);
   const headerRef = useRef(null);
-
-  const router = useRouter();
-  const { user: authUser } = useAuth();
-
-  const user = JSON.parse(localStorage.getItem('@gouveawebsite:user')!);
 
   const { logoTextWhite: gouveaLogo } = logoConfig;
 
@@ -40,6 +41,13 @@ export function AdminHeader({
     };
 
     animateHeader();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storageUser = JSON.parse(localStorage.getItem('@gouveawebsite:user')!);
+      setUser(storageUser);
+    }
   }, []);
 
   console.log(user);

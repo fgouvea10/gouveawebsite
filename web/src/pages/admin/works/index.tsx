@@ -4,9 +4,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import styles from 'styles/modules/admin/Works.module.css';
+import { useFetch } from 'hooks/fetch';
+import { getWorks } from 'services/use-cases/works';
+import { formatDate } from 'utils/formatDate';
 
 const WorksAdmin: NextPage = () => {
   const router = useRouter();
+
+  const { data } = useFetch('works', getWorks);
+  const works = data?.result;
 
   return (
     <>
@@ -24,18 +30,21 @@ const WorksAdmin: NextPage = () => {
               </div>
               <div className={styles['table-container']}>
                 <table>
-                  <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" className={styles.checkbox} />
+                    </th>
+                    <th>work name</th>
+                    <th>created at</th>
+                    <th>actions</th>
+                  </tr>
+                  {works?.map((work) => (
                     <tr>
-                      <th></th>
-                      <th>work name</th>
-                      <th>created at</th>
-                      <th>actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>ignews</td>
-                      <td>20/04/2022</td>
+                      <td>
+                        <input type="checkbox" className={styles.checkbox} />
+                      </td>
+                      <td>{work.name}</td>
+                      <td>{formatDate(work.created_at)}</td>
                       <td>
                         <div className={styles['action-button-container']}>
                           <button type="button" aria-label="remove work">
@@ -47,35 +56,7 @@ const WorksAdmin: NextPage = () => {
                         </div>
                       </td>
                     </tr>
-                    <tr>
-                      <td>ignews</td>
-                      <td>20/04/2022</td>
-                      <td>
-                        <div className={styles['action-button-container']}>
-                          <button type="button" aria-label="remove work">
-                            R
-                          </button>
-                          <button type="button" aria-label="edit work">
-                            E
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ignews</td>
-                      <td>20/04/2022</td>
-                      <td>
-                        <div className={styles['action-button-container']}>
-                          <button type="button" aria-label="remove work">
-                            R
-                          </button>
-                          <button type="button" aria-label="edit work">
-                            E
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
+                  ))}
                 </table>
               </div>
             </div>

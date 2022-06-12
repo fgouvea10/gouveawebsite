@@ -24,11 +24,8 @@ const SignIn: NextPage = () => {
     try {
       await signIn(email, password);
 
-      // console.log('router.push');
-
       router.push('/admin')
 
-      // router.push('/dashboard');
     } catch (err: any) {
       setIsInvalidCredentials(true);
       // console.log(err);
