@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { FiTrash, FiEdit2 } from 'react-icons/fi';
+
 import Head from 'next/head';
 import type { NextPage } from 'next';
 import Link from 'next/link';
@@ -5,14 +8,28 @@ import { useRouter } from 'next/router';
 
 import styles from 'styles/modules/admin/Works.module.css';
 import { useFetch } from 'hooks/fetch';
-import { getWorks } from 'services/use-cases/works';
+import { deleteWork, getWorks } from 'services/use-cases/works';
 import { formatDate } from 'utils/formatDate';
 
 const WorksAdmin: NextPage = () => {
+  const [isDeletingWork, setIsDeletingWork] = useState(false);
+
   const router = useRouter();
 
   const { data } = useFetch('works', getWorks);
   const works = data?.result;
+
+  const handleDeleteWork = async (id: string) => {
+    setIsDeletingWork(true);
+
+    try {
+      await deleteWork(id);
+    } catch (err) {
+      // console.log(err);
+    } finally {
+      setIsDeletingWork(false);
+    }
+  };
 
   return (
     <>
@@ -26,7 +43,12 @@ const WorksAdmin: NextPage = () => {
             <div className={styles['works-box']}>
               <div className={styles['flex-row']}>
                 <h1>Works</h1>
-                <button type="button">create</button>
+                <button
+                  type="button"
+                  onClick={() => router.push('/admin/works/create')}
+                >
+                  create
+                </button>
               </div>
               <div className={styles['table-container']}>
                 <table>
@@ -47,11 +69,16 @@ const WorksAdmin: NextPage = () => {
                       <td>{formatDate(work.created_at)}</td>
                       <td>
                         <div className={styles['action-button-container']}>
-                          <button type="button" aria-label="remove work">
-                            R
+                          <button
+                            type="button"
+                            aria-label="remove work"
+                            onClick={() => handleDeleteWork(work.id)}
+                            disabled={isDeletingWork}
+                          >
+                            <FiTrash color="#0e0d0d" size={16} />
                           </button>
                           <button type="button" aria-label="edit work">
-                            E
+                            <FiEdit2 color="#0e0d0d" size={16} />
                           </button>
                         </div>
                       </td>

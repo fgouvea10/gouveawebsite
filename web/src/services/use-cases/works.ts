@@ -18,3 +18,19 @@ export const getWorks = async (): Promise<IResponse> => {
 
   return response;
 };
+
+export const createWork = async (
+  name: string,
+  excerpt: string,
+  content: string
+) => {
+  await api.post('/works/create', {
+    name,
+    excerpt,
+    content,
+  });
+};
+
+export const deleteWork = async (id: string) => {
+  await api.delete(`/works/${id}`);
+};

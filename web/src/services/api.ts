@@ -1,12 +1,14 @@
 import axios from 'axios';
 
-// const getToken = () => localStorage.getItem('@gouveawebsite:token');
+let token: string | null = '';
 
-// const USER_TOKEN = getToken();
+if (typeof window !== 'undefined') {
+  token = localStorage.getItem('@gouveawebsite:token');
+}
 
 export const api = axios.create({
   baseURL: 'http://localhost:3333',
-  // headers: {
-  //   Authorization: `Bearer ${USER_TOKEN}`,
-  // },
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
 });
