@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
-import { CreatePostUseCase } from './create-post-use-case';
+import { CreatePostUseCase } from "./create-post-use-case";
 
 export class CreatePostController {
   async handle(request: Request, response: Response) {
@@ -14,6 +14,9 @@ export class CreatePostController {
       user_id,
     });
 
-    return response.json(result);
+    return response.status(201).json({
+      success: true,
+      result,
+    });
   }
 }

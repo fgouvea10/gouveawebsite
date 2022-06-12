@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
-import { UpdateWorkUseCase } from './update-work-use-case';
+import { UpdateWorkUseCase } from "./update-work-use-case";
 
 export class UpdateWorkController {
   async handle(request: Request, response: Response) {
@@ -15,6 +15,9 @@ export class UpdateWorkController {
       content,
     });
 
-    return response.json(result);
+    return response.status(200).json({
+      success: true,
+      result,
+    });
   }
 }

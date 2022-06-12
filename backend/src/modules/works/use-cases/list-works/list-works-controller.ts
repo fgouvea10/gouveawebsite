@@ -7,6 +7,9 @@ export class ListWorksController {
     const listWorksUseCase = new ListWorksUseCase();
     const result = await listWorksUseCase.execute();
 
-    return response.json(result);
+    return response.status(200).json({
+      success: true,
+      result
+    });
   }
 }

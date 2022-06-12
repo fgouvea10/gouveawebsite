@@ -12,6 +12,9 @@ export class AuthenticateUserController {
       password,
     });
 
-    return response.json(result);
+    return response.status(200).json({
+      success: true,
+      result,
+    });
   }
 }

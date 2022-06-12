@@ -7,6 +7,9 @@ export class ListPostsController {
     const listPostsUseCase = new ListPostsUseCase();
     const result = await listPostsUseCase.execute();
 
-    return response.json(result);
+    return response.status(200).json({
+      success: true,
+      result,
+    });
   }
 }

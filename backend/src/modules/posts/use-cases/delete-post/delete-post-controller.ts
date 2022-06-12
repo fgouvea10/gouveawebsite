@@ -7,8 +7,10 @@ export class DeletePostController {
     const { id } = request.params;
 
     const deletePostUseCase = new DeletePostUseCase();
-    const result = await deletePostUseCase.execute({ id });
+    await deletePostUseCase.execute({ id });
 
-    return response.json(result);
+    return response.status(200).json({
+      success: true,
+    });
   }
 }

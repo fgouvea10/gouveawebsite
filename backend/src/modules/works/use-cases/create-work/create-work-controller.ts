@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { CreateWorkUseCase } from './create-work-use-case';
+import { Request, Response } from "express";
+import { CreateWorkUseCase } from "./create-work-use-case";
 
 export class CreateWorkController {
   async handle(request: Request, response: Response) {
@@ -12,6 +12,9 @@ export class CreateWorkController {
       content,
     });
 
-    return response.json(result);
+    return response.status(201).json({
+      success: true,
+      result,
+    });
   }
 }

@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
-import { FindPostUseCase } from './find-post-use-case';
+import { FindPostUseCase } from "./find-post-use-case";
 
 export class FindPostController {
   async handle(request: Request, response: Response) {
@@ -9,6 +9,9 @@ export class FindPostController {
     const findPostUseCase = new FindPostUseCase();
     const result = await findPostUseCase.execute({ id });
 
-    return response.json(result);
+    return response.status(200).json({
+      success: true,
+      result,
+    });
   }
 }

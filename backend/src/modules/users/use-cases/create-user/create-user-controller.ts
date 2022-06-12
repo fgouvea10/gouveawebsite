@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { CreateUserUseCase } from './create-user-use-case';
+import { Request, Response } from "express";
+import { CreateUserUseCase } from "./create-user-use-case";
 
 export class CreateUserController {
   async handle(request: Request, response: Response) {
@@ -12,6 +12,9 @@ export class CreateUserController {
       password,
     });
 
-    return response.json(result);
+    return response.status(201).json({
+      success: true,
+      result,
+    });
   }
 }
