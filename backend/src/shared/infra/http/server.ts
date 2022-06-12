@@ -1,10 +1,16 @@
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
+import cors from 'cors';
 
 import { appRoutes } from './routes';
 import { AppError } from '../../errors/AppError';
 
 const app = express();
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+  })
+);
 app.use(express.json());
 
 app.use(appRoutes);
