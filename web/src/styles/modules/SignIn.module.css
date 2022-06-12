@@ -23,6 +23,13 @@
   justify-content: center;
 }
 
+.login .container span {
+  margin-top: -1.5rem;
+  text-align: left;
+  width: 100%;
+  color: red;
+}
+
 .login .container .login-box {
   padding: 4rem 2rem;
   background: var(--gray-800);
@@ -63,6 +70,10 @@
   color: var(--gray-900);
   font-weight: 400;
   transition: filter 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .login .container .login-box button:hover {
@@ -80,3 +91,4 @@
     max-width: 300px;
   }
 }
+

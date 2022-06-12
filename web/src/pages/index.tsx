@@ -7,13 +7,17 @@ import styles from 'styles/modules/Home.module.css';
 import { BlogCard, WorkCard } from 'components/shared';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useAuth } from 'hooks/auth';
 
 const Home: NextPage = () => {
   const router = useRouter();
+  const { user } = useAuth();
 
   const heroSection = useRef(null);
   const worksSection = useRef(null);
   const postsSection = useRef(null);
+
+  console.log(user);
 
   useEffect(() => {
     const animateHeroSection = async () => {
