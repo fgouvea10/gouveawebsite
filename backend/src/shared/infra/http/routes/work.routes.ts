@@ -16,7 +16,7 @@ const updateWorkController = new UpdateWorkController();
 const findWorkController = new FindWorkController();
 
 workRoutes.get('', listWorksController.handle);
+workRoutes.get('/:id', findWorkController.handle);
 workRoutes.post('/create', ensureAuthenticated, createWorkController.handle);
 workRoutes.delete('/:id', ensureAuthenticated, deleteWorkController.handle);
 workRoutes.put('/:id', ensureAuthenticated, updateWorkController.handle);
-workRoutes.get('/:id', ensureAuthenticated, findWorkController.handle);
