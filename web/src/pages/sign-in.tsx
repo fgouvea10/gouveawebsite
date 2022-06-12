@@ -1,9 +1,8 @@
 import { FormEvent, useState } from 'react';
-import { AxiosError } from 'axios';
 
 import Head from 'next/head';
 import type { NextPage } from 'next';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 import { useAuth } from 'hooks/auth';
 
@@ -15,8 +14,8 @@ const SignIn: NextPage = () => {
   const [isInvalidCredentials, setIsInvalidCredentials] = useState(false);
   const [isSigning, setIsSigning] = useState(false);
 
-  // const router = useRouter();
-  const { signIn, user } = useAuth();
+  const router = useRouter();
+  const { signIn } = useAuth();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -26,6 +25,8 @@ const SignIn: NextPage = () => {
       await signIn(email, password);
 
       // console.log('router.push');
+
+      router.push('/admin')
 
       // router.push('/dashboard');
     } catch (err: any) {
