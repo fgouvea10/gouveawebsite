@@ -1,4 +1,4 @@
-import { prisma } from '../../../../database/prismaClient';
+import { prisma } from "../../../../shared/infra/prisma";
 
 interface IDeleteUser {
   id: string;

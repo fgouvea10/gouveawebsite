@@ -1,7 +1,7 @@
 import { hash } from 'bcrypt';
 
-import { prisma } from '../../../../database/prismaClient';
 import { AppError } from '../../../../shared/errors/AppError';
+import { prisma } from '../../../../shared/infra/prisma';
 
 interface ICreateUser {
   email: string;
