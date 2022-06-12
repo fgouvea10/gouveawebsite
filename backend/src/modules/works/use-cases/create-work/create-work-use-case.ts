@@ -1,4 +1,5 @@
 import { prisma } from '../../../../database/prismaClient';
+import { AppError } from '../../../../shared/errors/AppError';
 
 interface ICreateWork {
   name: string;
@@ -16,7 +17,7 @@ export class CreateWorkUseCase {
       },
     });
 
-    if (workAlreadyExists) throw new Error('Work already exists');
+    if (workAlreadyExists) throw new AppError('Work already exists', 409);
 
     const work = await prisma.works.create({
       data: {
