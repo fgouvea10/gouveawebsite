@@ -12,13 +12,13 @@ export async function ensureAuthenticated(
 
   if (!authHeader) throw new AppError('Missing token', 401);
 
-  const token = authHeader.replace('Bearer', ' ');
+  const [, token] = authHeader.split(' ');
 
-  try {
-    jwt.verify(token, '085d711cbcf520e9c590fd994c7c8a5a');
+  jwt.verify(token, '085d711cbcf520e9c590fd994c7c8a5a', (err, userData) => {
+    if (err) throw new AppError('Failed to authenticate token', 403);
 
-    next();
-  } catch (error) {
-    throw new AppError('Invalid token', 401);
-  }
+    if (userData) return next();
+
+    return response.status(500).send('Internal server error');
+  });
 }
