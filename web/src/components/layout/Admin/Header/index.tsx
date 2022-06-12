@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
+import { FiPower } from 'react-icons/fi';
 
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { useAuth } from 'hooks/auth';
 import { logoConfig } from 'config/logo';
 
 import styles from './AdminHeader.module.css';
@@ -25,6 +27,8 @@ export function AdminHeader({
   const [user, setUser] = useState<User>({} as User);
   const headerRef = useRef(null);
 
+  const { signOut } = useAuth();
+
   const { logoTextWhite: gouveaLogo } = logoConfig;
 
   useEffect(() => {
@@ -45,7 +49,9 @@ export function AdminHeader({
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storageUser = JSON.parse(localStorage.getItem('@gouveawebsite:user')!);
+      const storageUser = JSON.parse(
+        localStorage.getItem('@gouveawebsite:user')!
+      );
       setUser(storageUser);
     }
   }, []);
@@ -73,6 +79,14 @@ export function AdminHeader({
           <div className={styles['user-picture']}>
             {getInitials(user?.name)}
           </div>
+          <button
+            type="button"
+            onClick={() => signOut()}
+            className={styles.logout}
+            title="Logout"
+          >
+            <FiPower color="#c9c8c8" size={16} />
+          </button>
         </div>
       )}
     </header>

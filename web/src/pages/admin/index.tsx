@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Head from 'next/head';
 import type { NextPage } from 'next';
 import Link from 'next/link';
@@ -7,6 +9,15 @@ import styles from 'styles/modules/admin/Admin.module.css';
 
 const Admin: NextPage = () => {
   const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('@gouveawebsite:token');
+      if (token === null || token === '') {
+        router.push('/sign-in');
+      }
+    }
+  }, []);
 
   return (
     <>

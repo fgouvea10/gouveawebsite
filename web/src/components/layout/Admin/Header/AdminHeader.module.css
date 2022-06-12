@@ -55,6 +55,11 @@
   -o-user-select: none;
 }
 
+.logout {
+  background: transparent;
+  border: none;
+}
+
 @media (max-width: 70rem) {
   .header {
     padding: 1rem 2rem;

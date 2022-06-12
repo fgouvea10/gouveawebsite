@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 import Head from 'next/head';
 import type { NextPage } from 'next';
@@ -30,6 +30,15 @@ const WorksAdmin: NextPage = () => {
       setIsCreatingWork(false);
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('@gouveawebsite:token');
+      if (token === null || token === '') {
+        router.push('/sign-in');
+      }
+    }
+  }, []);
 
   return (
     <>

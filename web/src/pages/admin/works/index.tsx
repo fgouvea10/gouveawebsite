@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiTrash, FiEdit2 } from 'react-icons/fi';
 
 import Head from 'next/head';
@@ -30,6 +30,15 @@ const WorksAdmin: NextPage = () => {
       setIsDeletingWork(false);
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('@gouveawebsite:token');
+      if (token === null || token === '') {
+        router.push('/sign-in');
+      }
+    }
+  }, []);
 
   return (
     <>
