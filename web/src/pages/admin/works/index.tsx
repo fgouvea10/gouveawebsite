@@ -51,40 +51,44 @@ const WorksAdmin: NextPage = () => {
                 </button>
               </div>
               <div className={styles['table-container']}>
-                <table>
-                  <tr>
-                    <th>
-                      <input type="checkbox" className={styles.checkbox} />
-                    </th>
-                    <th>work name</th>
-                    <th>created at</th>
-                    <th>actions</th>
-                  </tr>
-                  {works?.map((work) => (
+                {works && works.length > 0 ? (
+                  <table>
                     <tr>
-                      <td>
+                      <th>
                         <input type="checkbox" className={styles.checkbox} />
-                      </td>
-                      <td>{work.name}</td>
-                      <td>{formatDate(work.created_at)}</td>
-                      <td>
-                        <div className={styles['action-button-container']}>
-                          <button
-                            type="button"
-                            aria-label="remove work"
-                            onClick={() => handleDeleteWork(work.id)}
-                            disabled={isDeletingWork}
-                          >
-                            <FiTrash color="#0e0d0d" size={16} />
-                          </button>
-                          <button type="button" aria-label="edit work">
-                            <FiEdit2 color="#0e0d0d" size={16} />
-                          </button>
-                        </div>
-                      </td>
+                      </th>
+                      <th>work name</th>
+                      <th>created at</th>
+                      <th>actions</th>
                     </tr>
-                  ))}
-                </table>
+                    {works?.map((work) => (
+                      <tr>
+                        <td>
+                          <input type="checkbox" className={styles.checkbox} />
+                        </td>
+                        <td>{work.name}</td>
+                        <td>{formatDate(work.created_at)}</td>
+                        <td>
+                          <div className={styles['action-button-container']}>
+                            <button
+                              type="button"
+                              aria-label="remove work"
+                              onClick={() => handleDeleteWork(work.id)}
+                              disabled={isDeletingWork}
+                            >
+                              <FiTrash color="#0e0d0d" size={16} />
+                            </button>
+                            <button type="button" aria-label="edit work">
+                              <FiEdit2 color="#0e0d0d" size={16} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </table>
+                ) : (
+                  <p>nothing to display here yet :(</p>
+                )}
               </div>
             </div>
           </div>
