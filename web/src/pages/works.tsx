@@ -4,33 +4,49 @@ import type { NextPage } from 'next';
 
 import { DefaultCard } from 'components/shared/Cards/Default';
 
-import styles from 'styles/modules/Works.module.css';
 import { useFetch } from 'hooks/fetch';
 import axios from 'axios';
-import { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { useEffect, useState } from 'react';
 import { IRepositoriesDTO } from 'dtos/IRepositoriesDTO';
 import { formatDate } from 'utils/formatDate';
+import { getWorks } from 'services/use-cases/works';
+
+import styles from 'styles/modules/Works.module.css';
+
+type Work = {
+  title: string;
+  excerpt: string;
+};
 
 const Works: NextPage = () => {
-  const { data: repositories, isFetching } = useFetch<IRepositoriesDTO[]>(
-    'repositories',
-    async () => {
-      const response = await axios.get(
-        'https://api.github.com/users/fgouvea10/repos'
-      );
+  const [works, setWorks] = useState<Work[]>([]);
+  const { data: repositories, isFetching: isFetchingRepositories } = useFetch<
+    IRepositoriesDTO[]
+  >('repositories', async () => {
+    const response = await axios.get(
+      'https://api.github.com/users/fgouvea10/repos'
+    );
 
-      return response.data;
-    }
+    return response.data;
+  });
+
+  const { data: queryWorks, isFetching: isFetchingWorks } = useFetch(
+    'works',
+    getWorks
   );
 
-  const works = [
-    {
-      id: 1,
-      title: 'savethepet',
-      excerpt: 'this is a test',
-    },
-  ];
+  useEffect(() => {
+    if (queryWorks) {
+      const mappedWorks = queryWorks.result.map((work) => ({
+        title: work.name,
+        excerpt: work.excerpt,
+      }));
+
+      setWorks(mappedWorks);
+    }
+  }, [queryWorks]);
+
+  console.log(works);
 
   return (
     <>
@@ -41,15 +57,22 @@ const Works: NextPage = () => {
       <main className={styles.main}>
         <section className={styles.works}>
           <div className={styles.container}>
-            <h2>Recent works</h2>
+            <h2>Featured works</h2>
             <div className={styles.cards}>
-              {works.map((work, index) => (
-                <DefaultCard
-                  key={String(index + 1)}
-                  data={work}
-                  element={<Link href="/">see study case</Link>}
-                />
-              ))}
+              {isFetchingWorks
+                ? Array.from({ length: 2 }, (_, index) => (
+                    <div
+                      key={String(index + 1)}
+                      className={styles['work-skeleton-loading']}
+                    />
+                  ))
+                : works?.map((work: Work, index: number) => (
+                    <DefaultCard
+                      key={String(index + 1)}
+                      data={work}
+                      element={<Link href="/">see study case</Link>}
+                    />
+                  ))}
             </div>
           </div>
         </section>
@@ -58,7 +81,7 @@ const Works: NextPage = () => {
           <div className={styles.container}>
             <h2>Git repositories</h2>
             <div className={styles['git-cards']}>
-              {isFetching
+              {isFetchingRepositories
                 ? Array.from({ length: 3 }, (_, index) => (
                     <div
                       key={String(index + 1)}
