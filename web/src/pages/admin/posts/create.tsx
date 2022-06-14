@@ -1,4 +1,10 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
+
+// import JoditEditor from 'jodit-react';
+const JoditEditorNoSSR = dynamic(import('jodit-react'), {
+  ssr: false,
+  loading: () => <p>loading...</p>
+})
 
 import Head from 'next/head';
 import type { NextPage } from 'next';
@@ -8,6 +14,7 @@ import { useRouter } from 'next/router';
 import { createPost } from 'services/use-cases/posts';
 
 import styles from 'styles/modules/admin/CreatePost.module.css';
+import dynamic from 'next/dynamic';
 
 const CreatePostAdmin: NextPage = () => {
   const [title, setTitle] = useState('');
@@ -15,14 +22,23 @@ const CreatePostAdmin: NextPage = () => {
   const [content, setContent] = useState('');
   const [isCreatingPost, setIsCreatingPost] = useState(false);
 
+  const editorRef = useRef(null);
+
   const router = useRouter();
+
+  const config = {
+    readonly: false,
+    height: 300,
+  };
 
   const handleCreatePost = async (event: FormEvent) => {
     event?.preventDefault();
     setIsCreatingPost(true);
 
     try {
-      const storageUser = JSON.parse(localStorage.getItem('@gouveawebsite:user')!);
+      const storageUser = JSON.parse(
+        localStorage.getItem('@gouveawebsite:user')!
+      );
       const userId = storageUser.id;
       await createPost(title, excerpt, content, userId);
       router.push('/admin/posts');
@@ -75,11 +91,19 @@ const CreatePostAdmin: NextPage = () => {
                   </div>
                 </div>
                 <div className={styles['input-container']}>
-                  <textarea
+                  {/* <textarea
                     placeholder="description"
                     value={content}
                     onChange={(event) => setContent(event.target.value)}
-                  ></textarea>
+                  ></textarea> */}
+                  {/* {typeof window !== 'undefined' ? ( */}
+                    <JoditEditorNoSSR
+                      // ref={editorRef}
+                      value={content}
+                      config={config}
+                      onBlur={(newContent) => setContent(newContent)}
+                      onChange={newContent => {}}
+                    />
                 </div>
                 {/* <div className={styles['shared-container']}>
                   <div className={styles['input-container']}>

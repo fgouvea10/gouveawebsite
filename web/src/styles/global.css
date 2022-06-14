@@ -70,6 +70,14 @@ button {
   cursor: pointer;
 }
 
+.jodit-workplace + .jodit-status-bar:not(:empty) {
+  display: none;
+}
+
+.jodit-editor__resize {
+  display: none;
+}
+
 .fade-in {
   animation: fadeIn ease 1s forwards;
   -webkit-animation: fadeIn ease 1s forwards;
