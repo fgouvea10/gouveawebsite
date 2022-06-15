@@ -6,6 +6,6 @@ import { postRoutes } from './posts.routes';
 
 export const appRoutes = Router();
 
-appRoutes.use('/user', userRoutes);
+appRoutes.use('/users', userRoutes);
 appRoutes.use('/works', workRoutes);
 appRoutes.use('/posts', postRoutes);
