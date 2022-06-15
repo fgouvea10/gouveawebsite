@@ -6,10 +6,11 @@ interface ICreateWork {
   excerpt: string;
   content: string;
   slug: string;
+  isFeatured: boolean;
 }
 
 export class CreateWorkUseCase {
-  async execute({ name, excerpt, content, slug }: ICreateWork) {
+  async execute({ name, excerpt, content, slug, isFeatured }: ICreateWork) {
     // const workAlreadyExists = await prisma.works.findFirst({
     //   where: {
     //     name: {
@@ -26,6 +27,7 @@ export class CreateWorkUseCase {
         excerpt,
         content,
         slug,
+        isFeatured,
       } as any,
     });
 
