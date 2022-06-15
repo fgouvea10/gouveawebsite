@@ -1,14 +1,15 @@
-import { AppError } from '../../../../shared/errors/AppError';
-import { prisma } from '../../../../shared/infra/prisma';
+import { AppError } from "../../../../shared/errors/AppError";
+import { prisma } from "../../../../shared/infra/prisma";
 
 interface ICreateWork {
   name: string;
   excerpt: string;
   content: string;
+  slug: string;
 }
 
 export class CreateWorkUseCase {
-  async execute({ name, excerpt, content }: ICreateWork) {
+  async execute({ name, excerpt, content, slug }: ICreateWork) {
     // const workAlreadyExists = await prisma.works.findFirst({
     //   where: {
     //     name: {
@@ -24,7 +25,8 @@ export class CreateWorkUseCase {
         name,
         excerpt,
         content,
-      },
+        slug,
+      } as any,
     });
 
     return work;

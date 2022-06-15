@@ -1,15 +1,16 @@
-import { AppError } from '../../../../shared/errors/AppError';
-import { prisma } from '../../../../shared/infra/prisma';
+import { AppError } from "../../../../shared/errors/AppError";
+import { prisma } from "../../../../shared/infra/prisma";
 
 interface ICreatePost {
   title: string;
   excerpt: string;
   content: string;
   user_id: string;
+  slug: string;
 }
 
 export class CreatePostUseCase {
-  async execute({ title, excerpt, content, user_id }: ICreatePost) {
+  async execute({ title, excerpt, content, user_id, slug }: ICreatePost) {
     // const postAlreadyExists = await prisma.posts.findFirst({
     //   where: {
     //     title: {
@@ -25,7 +26,8 @@ export class CreatePostUseCase {
         title,
         excerpt,
         content,
-        user_id
+        user_id,
+        slug,
       } as any,
     });
 

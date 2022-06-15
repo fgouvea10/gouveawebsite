@@ -3,13 +3,14 @@ import { CreateWorkUseCase } from "./create-work-use-case";
 
 export class CreateWorkController {
   async handle(request: Request, response: Response) {
-    const { name, excerpt, content } = request.body;
+    const { name, excerpt, content, slug } = request.body;
 
     const createWorkUseCase = new CreateWorkUseCase();
     const result = await createWorkUseCase.execute({
       name,
       excerpt,
       content,
+      slug,
     });
 
     return response.status(201).json({
