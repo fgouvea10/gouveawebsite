@@ -1,0 +1,191 @@
+.main {
+  width: 100vw;
+  max-width: 70rem;
+  margin: 4rem auto;
+  overflow-x: hidden;
+}
+
+.works {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4rem;
+  /* margin-top: 4rem; */
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.cards {
+  width: 100%;
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 3rem;
+}
+
+.git-repositories {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.cards .work-skeleton-loading,
+.git-repositories .git-skeleton-loading {
+  width: 100%;
+}
+
+@keyframes skeleton {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.cards .work-skeleton-loading {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  z-index: 1;
+  border-radius: 5px;
+  background: var(--gray-800);
+  width: 100%;
+  height: 300px;
+}
+
+.git-repositories .work-skeleton-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    var(--gray-700) 0,
+    #0e0e0e 70%,
+    #0e0e0e 80%,
+    var(--gray-700)
+  );
+  animation: skeleton 3s infinite;
+}
+
+.git-repositories .git-skeleton-loading {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  z-index: 1;
+  border-radius: 5px;
+  background: var(--gray-800);
+  width: 100%;
+  height: 200px;
+}
+
+.git-repositories .git-skeleton-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    var(--gray-700) 0,
+    #0e0e0e 70%,
+    #0e0e0e 80%,
+    var(--gray-700)
+  );
+  animation: skeleton 3s infinite;
+}
+
+.git-repositories .git-cards {
+  width: 100%;
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem 3rem;
+}
+
+.git-repositories .git-cards .git-card {
+  width: 100%;
+  background: var(--gray-800);
+  border: 1px solid var(--gray-600);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.git-repositories .git-cards .git-card .git-card-content {
+  width: 100%;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.git-repositories .git-cards .git-card .git-card-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.git-repositories .git-cards .git-card .git-card-header time {
+  text-align: right;
+}
+
+.git-repositories .git-cards .git-card .git-card-header .divider {
+  width: 100%;
+  height: 2px;
+  background: var(--gray-600);
+}
+
+.git-repositories .git-cards .git-card .git-card-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.git-repositories .git-cards .git-card .git-card-body .picture {
+  width: 64px;
+  height: 64px;
+  background: var(--white);
+  border-radius: 50%;
+  margin-top: -4rem;
+  display: grid;
+  place-items: center;
+}
+
+.git-repositories .git-cards .git-card .git-card-body .picture img {
+  width: 36px;
+  height: 36px;
+}
+
+.git-repositories .git-cards .git-card .git-card-body strong {
+  margin-top: 1rem;
+}
+
+.git-repositories .git-cards .git-card .git-card-body p {
+  margin-top: 1rem;
+}
+
+@media (max-width: 70rem) {
+  .main {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 62rem) {
+  .main {
+    margin: 0 auto;
+  }
+
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
