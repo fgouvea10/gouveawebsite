@@ -1,10 +1,10 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 
 // import JoditEditor from 'jodit-react';
-const JoditEditorNoSSR = dynamic(import('jodit-react'), {
-  ssr: false,
-  loading: () => <p>loading...</p>
-})
+// const JoditEditorNoSSR = dynamic(import('jodit-react'), {
+//   ssr: false,
+//   loading: () => <p>loading...</p>
+// })
 
 import Head from 'next/head';
 import type { NextPage } from 'next';
@@ -91,19 +91,19 @@ const CreatePostAdmin: NextPage = () => {
                   </div>
                 </div>
                 <div className={styles['input-container']}>
-                  {/* <textarea
+                  <textarea
                     placeholder="description"
                     value={content}
                     onChange={(event) => setContent(event.target.value)}
-                  ></textarea> */}
+                  ></textarea>
                   {/* {typeof window !== 'undefined' ? ( */}
-                    <JoditEditorNoSSR
+                    {/* <JoditEditorNoSSR
                       // ref={editorRef}
                       value={content}
                       config={config}
                       onBlur={(newContent) => setContent(newContent)}
                       onChange={newContent => {}}
-                    />
+                    /> */}
                 </div>
                 {/* <div className={styles['shared-container']}>
                   <div className={styles['input-container']}>
