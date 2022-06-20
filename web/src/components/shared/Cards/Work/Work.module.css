@@ -134,6 +134,7 @@
   .secondary-light {
     color: var(--white);
     background: var(--gray-800);
+    cursor: not-allowed;
   }
 
   .secondary-dark {
@@ -141,5 +142,6 @@
     background: transparent;
     border: 1px solid var(--gray-300);
     color: var(--gray-300);
+    cursor: not-allowed;
   }
 }

@@ -7,15 +7,14 @@ interface ICreateWork {
   content: string;
   slug: string;
   isFeatured: boolean;
+  path: string;
 }
 
 export class CreateWorkUseCase {
-  async execute({ name, excerpt, content, slug, isFeatured }: ICreateWork) {
-    // const workAlreadyExists = await prisma.works.findFirst({
+  async execute({ name, excerpt, content, slug, path, isFeatured }: ICreateWork) {
+    // const workAlreadyExists = await prisma.works.findUnique({
     //   where: {
-    //     name: {
-    //       mode: 'insensitive',
-    //     },
+    //     content,
     //   },
     // });
 
@@ -28,6 +27,7 @@ export class CreateWorkUseCase {
         content,
         slug,
         isFeatured,
+        path,
       } as any,
     });
 

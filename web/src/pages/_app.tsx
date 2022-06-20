@@ -3,6 +3,8 @@ import { QueryClientProvider } from 'react-query';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 
+import { Toaster } from 'react-hot-toast';
+
 import { AuthProvider } from 'hooks/auth';
 import { client } from 'services/queryClient';
 import { Header, Footer, AdminHeader } from 'components/layout';
@@ -36,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <QueryClientProvider client={client}>
           <AdminHeader shouldDisplayUserInfo />
+          <Toaster position="top-right" reverseOrder={false} />
           <Component {...pageProps} />
         </QueryClientProvider>
       </AuthProvider>

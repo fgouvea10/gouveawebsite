@@ -64,6 +64,12 @@
   width: 100%;
 }
 
+.input-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .input-container input {
   width: 100%;
   background: var(--gray-900);
@@ -159,5 +165,15 @@
 
   .main .sidebar {
     left: 10%;
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main .dashboard .container .works-box {
+    margin-left: 0;
   }
 }

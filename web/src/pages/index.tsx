@@ -1,15 +1,27 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useQuery } from 'react-query';
 
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+
+import { BlogCard, WorkCard } from 'components/shared';
+import { useAuth } from 'hooks/auth';
+import { getPosts } from 'services/use-cases/posts';
 
 import styles from 'styles/modules/Home.module.css';
-import { BlogCard, WorkCard } from 'components/shared';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { useAuth } from 'hooks/auth';
 
 const Home: NextPage = () => {
+  const [posts, setPosts] = useState<
+    {
+      title: string;
+      createdAt: string;
+    }[]
+  >([]);
+  const { data, isLoading, isError } = useQuery('posts', getPosts);
+
+  console.log(posts);
+
   const router = useRouter();
   const { user } = useAuth();
 
@@ -60,6 +72,18 @@ const Home: NextPage = () => {
     animateWorksSection();
     animatePostsSection();
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      const slicedPosts = data.result.slice(0, 3);
+      const mappedPost = slicedPosts.map((post) => ({
+        createdAt: post.created_at,
+        title: post.title,
+      }));
+      console.log(slicedPosts);
+      setPosts(mappedPost);
+    }
+  }, [data]);
 
   return (
     <>
@@ -127,33 +151,47 @@ const Home: NextPage = () => {
           <div className={styles.container}>
             <div className={`${styles['grid-container']}`}>
               <div className={styles['large-dark-area-left']}>
-                <WorkCard alignment="left" theme="dark" />
+                <WorkCard alignment="left" theme="dark" work={PANDUR_MOCK} />
               </div>
               <div className={styles['small-white-area-right']}>
-                <WorkCard alignment="right" theme="light" />
+                <WorkCard alignment="right" theme="light" work={IGNEWS_MOCK} />
               </div>
-              <div className={styles['small-white-area-left']}>
+              {/* <div className={styles['small-white-area-left']}>
                 <WorkCard alignment="left" theme="light" />
               </div>
               <div className={styles['large-dark-area-right']}>
                 <WorkCard alignment="right" theme="dark" />
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
 
-        <section id="posts" ref={postsSection} className={styles.posts}>
-          <div className={styles.container}>
-            <div className={styles['grid-container']}>
-              <BlogCard />
-              <BlogCard />
-              <BlogCard />
+        {posts && posts.length > 0 && (
+          <section id="posts" ref={postsSection} className={styles.posts}>
+            <div className={styles.container}>
+              <div className={styles['grid-container']}>
+                {posts.map((post) => (
+                  <BlogCard post={post} />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
     </>
   );
+};
+
+const PANDUR_MOCK = {
+  title: 'Pandur',
+  excerpt: 'Pandur is a social forum for any kind of topics',
+  path: 'https://pandur.felipegouvea.com',
+};
+
+const IGNEWS_MOCK = {
+  title: 'ignews',
+  excerpt: 'ig.news is a blog containing news from the world of react.',
+  path: 'https://ignews.',
 };
 
 export default Home;

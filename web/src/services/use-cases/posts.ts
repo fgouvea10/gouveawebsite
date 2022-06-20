@@ -1,12 +1,6 @@
-import { api } from '../api';
+import { IPost } from 'lib/interfaces/IPost';
 
-interface IPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  created_at: string;
-}
+import { api } from '../api';
 
 interface IResponse {
   success: boolean;

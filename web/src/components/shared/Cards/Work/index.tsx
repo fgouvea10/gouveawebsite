@@ -1,12 +1,15 @@
+import { useRouter } from 'next/router';
+
 import styles from './Work.module.css';
 
 type WorkCardsProps = {
   alignment: 'right' | 'left';
   theme: 'dark' | 'light';
-  work?: {
+  work: {
     title: string;
     excerpt: string;
-    slug: string;
+    slug?: string;
+    path: string;
   };
 };
 
@@ -15,6 +18,8 @@ export function WorkCard({
   theme = 'dark',
   work,
 }: WorkCardsProps) {
+  const router = useRouter();
+
   return (
     <article
       className={`${
@@ -31,13 +36,12 @@ export function WorkCard({
             styles[theme === 'dark' ? 'title-dark' : 'title-light']
           }`}
         >
-          project logo
+          {work?.title}
         </strong>
         <p
           className={`${styles[theme === 'dark' ? 'text-dark' : 'text-light']}`}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-          pariatur reiciendis, perspiciatis nostrum soluta odio harum
+          {work?.excerpt}
         </p>
         <div
           className={`${
@@ -55,6 +59,7 @@ export function WorkCard({
                 ? styles['primary-dark']
                 : styles['primary-light']
             }
+            onClick={() => router.push(work?.path)}
           >
             preview
           </button>

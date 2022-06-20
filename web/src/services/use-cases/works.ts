@@ -22,12 +22,16 @@ export const getWorks = async (): Promise<IResponse> => {
 export const createWork = async (
   name: string,
   excerpt: string,
-  content: string
+  content: string,
+  path: string,
+  isFeatured = false
 ) => {
   await api.post('/works/create', {
     name,
     excerpt,
     content,
+    path,
+    isFeatured,
   });
 };
 

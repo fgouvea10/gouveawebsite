@@ -165,3 +165,13 @@
 .jodit-status-bar.jodit-status-bar_resize-handle_true {
   display: none;
 }
+
+@media (max-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main .dashboard .container .posts-box {
+    margin-left: 0;
+  }
+}
