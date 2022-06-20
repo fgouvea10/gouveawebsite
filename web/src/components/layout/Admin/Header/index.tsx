@@ -68,7 +68,7 @@ export function AdminHeader({
     }
   }, []);
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <header ref={headerRef} className={styles.header}>

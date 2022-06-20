@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   >([]);
   const { data, isLoading, isError } = useQuery('posts', getPosts);
 
-  console.log(posts);
+  // console.log(posts);
 
   const router = useRouter();
   const { user } = useAuth();
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
   const worksSection = useRef(null);
   const postsSection = useRef(null);
 
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     const animateHeroSection = async () => {
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
         createdAt: post.created_at,
         title: post.title,
       }));
-      console.log(slicedPosts);
+      // console.log(slicedPosts);
       setPosts(mappedPost);
     }
   }, [data]);
