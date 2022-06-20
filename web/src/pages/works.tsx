@@ -46,7 +46,7 @@ const Works: NextPage = () => {
     }
   }, [queryWorks]);
 
-  console.log(works);
+  // console.log(works);
 
   return (
     <>
