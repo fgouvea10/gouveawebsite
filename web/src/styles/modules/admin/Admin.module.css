@@ -56,3 +56,9 @@
     left: 10%;
   }
 }
+
+@media (max-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+}
