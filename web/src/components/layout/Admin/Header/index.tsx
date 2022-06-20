@@ -3,6 +3,7 @@ import { FiPower } from 'react-icons/fi';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { useAuth } from 'hooks/auth';
 import { logoConfig } from 'config/logo';
@@ -27,9 +28,15 @@ export function AdminHeader({
   const [user, setUser] = useState<User>({} as User);
   const headerRef = useRef(null);
 
+  const router = useRouter();
   const { signOut } = useAuth();
 
   const { logoTextWhite: gouveaLogo } = logoConfig;
+
+  const handleLogout = () => {
+    signOut();
+    router.push('/sign-in');
+  };
 
   useEffect(() => {
     const animateHeader = async () => {
@@ -81,7 +88,7 @@ export function AdminHeader({
           </div>
           <button
             type="button"
-            onClick={() => signOut()}
+            onClick={handleLogout}
             className={styles.logout}
             title="Logout"
           >

@@ -9,7 +9,7 @@ export const loginService = async ({
   email,
   password,
 }: IUserAuthentication) => {
-  const { data: response } = await api.post('/user/session', {
+  const { data: response } = await api.post('/users/session', {
     email,
     password,
   });
