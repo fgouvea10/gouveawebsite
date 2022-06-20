@@ -24,6 +24,7 @@ model Works {
   content    String
   slug       String?
   isFeatured Boolean?
+  path       String?
   created_at DateTime @default(now())
 
   @@map("works")
