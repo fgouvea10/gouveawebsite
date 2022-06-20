@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { NextPage } from 'next';
 import Head from 'next/head';
@@ -8,8 +8,21 @@ import { BlogCard, WorkCard } from 'components/shared';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useAuth } from 'hooks/auth';
+import { useQuery } from 'react-query';
+import { getPosts } from 'services/use-cases/posts';
+import { IPost } from 'lib/interfaces/IPost';
 
 const Home: NextPage = () => {
+  const [posts, setPosts] = useState<
+    {
+      title: string;
+      createdAt: string;
+    }[]
+  >([]);
+  const { data, isLoading, isError } = useQuery('posts', getPosts);
+
+  console.log(posts);
+
   const router = useRouter();
   const { user } = useAuth();
 
@@ -60,6 +73,18 @@ const Home: NextPage = () => {
     animateWorksSection();
     animatePostsSection();
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      const slicedPosts = data.result.slice(0, 3);
+      const mappedPost = slicedPosts.map((post) => ({
+        createdAt: post.created_at,
+        title: post.title,
+      }));
+      console.log(slicedPosts);
+      setPosts(mappedPost);
+    }
+  }, [data]);
 
   return (
     <>
@@ -142,15 +167,17 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section id="posts" ref={postsSection} className={styles.posts}>
-          <div className={styles.container}>
-            <div className={styles['grid-container']}>
-              <BlogCard />
-              <BlogCard />
-              <BlogCard />
+        {posts && posts.length > 0 && (
+          <section id="posts" ref={postsSection} className={styles.posts}>
+            <div className={styles.container}>
+              <div className={styles['grid-container']}>
+                {posts.map((post) => (
+                  <BlogCard post={post} />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
     </>
   );
