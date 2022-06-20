@@ -1,11 +1,14 @@
 import { FormEvent, useEffect, useState } from 'react';
 
+import toast from 'react-hot-toast';
+
 import Head from 'next/head';
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { createWork } from 'services/use-cases/works';
+import { Checkbox } from 'components/shared/Form/Checkbox';
 
 import styles from 'styles/modules/admin/CreateWork.module.css';
 
@@ -13,6 +16,8 @@ const WorksAdmin: NextPage = () => {
   const [name, setName] = useState('');
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
+  const [link, setLink] = useState('');
+  const [isFeatured, setIsFeatured] = useState(false);
   const [isCreatingWork, setIsCreatingWork] = useState(false);
 
   const router = useRouter();
@@ -22,7 +27,8 @@ const WorksAdmin: NextPage = () => {
     setIsCreatingWork(true);
 
     try {
-      await createWork(name, excerpt, content);
+      await createWork(name, excerpt, content, link, isFeatured);
+      toast.success(`${name} created successfully`);
       router.push('/admin/works');
     } catch (err) {
       console.log('err while create', createWork);
@@ -73,12 +79,31 @@ const WorksAdmin: NextPage = () => {
                   </div>
                 </div>
                 <div className={styles['input-container']}>
+                  <input
+                    type="text"
+                    placeholder="link"
+                    value={link}
+                    onChange={(event) => setLink(event.target.value)}
+                  />
+                </div>
+                <div className={styles['input-container']}>
                   <textarea
                     placeholder="description"
                     value={content}
                     onChange={(event) => setContent(event.target.value)}
                   ></textarea>
                 </div>
+                <div
+                  className={`${styles['input-container']} ${styles['input-checkbox']}`}
+                >
+                  <small>Is Featured</small>
+                  <Checkbox
+                    // value={isFeatured}
+                    defaultChecked={isFeatured}
+                    onChange={() => setIsFeatured(!isFeatured)}
+                  />
+                </div>
+
                 {/* <div className={styles['shared-container']}>
                   <div className={styles['input-container']}>
                     <input type="text" placeholder="title" />
