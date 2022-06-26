@@ -1,53 +1,9 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import type { NextPage } from 'next';
-
-import { DefaultCard } from 'components/shared/Cards/Default';
-
-import { useFetch } from 'hooks/fetch';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { IRepositoriesDTO } from 'dtos/IRepositoriesDTO';
-import { formatDate } from 'utils/formatDate';
-import { getWorks } from 'services/use-cases/works';
 
 import styles from 'styles/modules/Works.module.css';
 
-type Work = {
-  title: string;
-  excerpt: string;
-};
-
 const Works: NextPage = () => {
-  const [works, setWorks] = useState<Work[]>([]);
-  const { data: repositories, isFetching: isFetchingRepositories } = useFetch<
-    IRepositoriesDTO[]
-  >('repositories', async () => {
-    const response = await axios.get(
-      'https://api.github.com/users/fgouvea10/repos'
-    );
-
-    return response.data;
-  });
-
-  const { data: queryWorks, isFetching: isFetchingWorks } = useFetch(
-    'works',
-    getWorks
-  );
-
-  useEffect(() => {
-    if (queryWorks) {
-      const mappedWorks = queryWorks.result.map((work) => ({
-        title: work.name,
-        excerpt: work.excerpt,
-      }));
-
-      setWorks(mappedWorks);
-    }
-  }, [queryWorks]);
-
-  // console.log(works);
-
   return (
     <>
       <Head>
@@ -59,7 +15,7 @@ const Works: NextPage = () => {
           <div className={styles.container}>
             <h2>Featured works</h2>
             <div className={styles.cards}>
-              {isFetchingWorks
+              {/* {isFetchingWorks
                 ? Array.from({ length: 2 }, (_, index) => (
                     <div
                       key={String(index + 1)}
@@ -72,7 +28,7 @@ const Works: NextPage = () => {
                       data={work}
                       element={<Link href="/">see study case</Link>}
                     />
-                  ))}
+                  ))} */}
             </div>
           </div>
         </section>
@@ -81,7 +37,7 @@ const Works: NextPage = () => {
           <div className={styles.container}>
             <h2>Git repositories</h2>
             <div className={styles['git-cards']}>
-              {isFetchingRepositories
+              {/* {isFetchingRepositories
                 ? Array.from({ length: 3 }, (_, index) => (
                     <div
                       key={String(index + 1)}
@@ -111,7 +67,7 @@ const Works: NextPage = () => {
                         </div>
                       </div>
                     </Link>
-                  ))}
+                  ))} */}
             </div>
           </div>
         </section>

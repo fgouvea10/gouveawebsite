@@ -1,28 +1,9 @@
-import { AiFillClockCircle } from 'react-icons/ai';
-
 import Head from 'next/head';
 import type { NextPage } from 'next';
 
-import { DefaultCard } from 'components/shared/Cards/Default';
-import { DefaultCardLoading as Loading } from 'components/shared/Cards/Default/loading';
-
-import { useFetch } from 'hooks/fetch';
-import { getPosts } from 'services/use-cases/posts';
-
 import styles from 'styles/modules/Works.module.css';
 
-type Post = {
-  title: string;
-  excerpt: string;
-};
-
 const Blog: NextPage = () => {
-  const { data: queryPosts, isFetching: isFetchingPosts } = useFetch(
-    'posts',
-    getPosts
-  );
-  const posts = queryPosts?.result as Post[];
-
   return (
     <>
       <Head>
@@ -34,7 +15,7 @@ const Blog: NextPage = () => {
           <div className={styles.container}>
             <h1>Recent posts</h1>
             <div className={styles.cards}>
-              {isFetchingPosts ? (
+              {/* {isFetchingPosts ? (
                 Array.from({ length: 2 }, (_, index) => (
                   <Loading key={String(index + 1)} />
                 ))
@@ -58,7 +39,7 @@ const Blog: NextPage = () => {
                     }
                   />
                 ))
-              )}
+              )} */}
             </div>
           </div>
         </section>

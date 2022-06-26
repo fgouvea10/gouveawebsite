@@ -1,26 +1,9 @@
-import { AiFillClockCircle } from 'react-icons/ai';
-
 import Head from 'next/head';
 import type { NextPage } from 'next';
 
-import { DefaultCard } from 'components/shared/Cards/Default';
-
 import styles from 'styles/modules/Post.module.css';
-import { useFetch } from 'hooks/fetch';
-import { getPosts } from 'services/use-cases/posts';
-
-type Post = {
-  title: string;
-  excerpt: string;
-};
 
 const Blog: NextPage = () => {
-  const { data: queryPosts, isFetching: isFetchingPosts } = useFetch(
-    'posts',
-    getPosts
-  );
-  const posts = queryPosts?.result as Post[];
-
   return (
     <>
       <Head>
@@ -105,7 +88,7 @@ const Blog: NextPage = () => {
           <div className={styles.container}>
             <h2>Interested in more content?</h2>
             <div className={styles['grid-cards']}>
-              {posts?.map((post, index) => (
+              {/* {posts?.map((post, index) => (
                 <DefaultCard
                   key={String(index + 1)}
                   data={post}
@@ -121,7 +104,7 @@ const Blog: NextPage = () => {
                     </div>
                   }
                 />
-              ))}
+              ))} */}
             </div>
           </div>
         </section>
