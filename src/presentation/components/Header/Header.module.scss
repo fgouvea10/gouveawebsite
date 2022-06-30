@@ -1,0 +1,47 @@
+.header {
+  width: 100vw;
+  padding: 3rem;
+}
+
+.header .container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .container a {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--gray-200);
+  display: flex;
+  align-items: center;
+}
+
+.header .container .bar {
+  width: 50px;
+  height: 1px;
+  background: var(--gray-200);
+  margin-left: 0.625rem;
+}
+
+.header .container span {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-align: right;
+  color: var(--gray-200);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 2rem 1rem;
+  }
+
+  .header .container .bar {
+    display: none;
+  }
+}
