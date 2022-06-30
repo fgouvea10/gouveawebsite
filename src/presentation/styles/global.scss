@@ -1,0 +1,36 @@
+:root {
+  --white: #ffffff;
+  --gray-200: #8d8d99;
+  --gray-300: #c4c4cc;
+  --gray-400: #e1e1e6;
+  --gray-500: #323238;
+  --gray-700: #121214;
+  --gray-900: #09090a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--gray-900);
+  color: var(--white);
+  font: 400 1rem "Lexend Peta", sans-serif;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
