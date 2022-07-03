@@ -1,6 +1,6 @@
-import { Footer } from 'components/shared/Footer';
-import { Header } from 'components/shared/Header';
 import type { AppProps } from 'next/app';
+
+import { Footer, Header } from 'components/shared';
 
 import 'styles/global.scss';
 

@@ -1,0 +1,29 @@
+.works {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.works-section {
+  width: 100%;
+  // max-width: 1440px;
+  // margin: 7rem auto;
+  margin: 7rem 0;
+  padding-top: 3rem;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
