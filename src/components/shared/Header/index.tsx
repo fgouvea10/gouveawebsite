@@ -1,11 +1,29 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import styles from './Header.module.scss';
 
-export function Header(): JSX.Element {
+const HEADER_HEIGHT = 60;
+
+export function Header(): React.ReactElement {
   const [isActive, setIsActive] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const changeHeaderBackground = () => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY >= HEADER_HEIGHT) {
+        setIsScrolling(true);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', changeHeaderBackground);
+    }
+  }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolling ? styles.active : ''}`}>
       <div className={styles.container}>
         <a href="#">
           contact me <div />
