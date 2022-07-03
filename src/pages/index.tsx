@@ -1,7 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import styles from 'styles/modules/Home.module.css';
+import { WorkCard } from 'components/layout/Works/Card';
+import { Button } from 'components/layout/Form/Button';
+
+import styles from 'styles/modules/Home.module.scss';
 
 const Home: NextPage = () => {
   return (
@@ -21,85 +24,34 @@ const Home: NextPage = () => {
           content="https://felipegouvea.com/images/thumbnail.png"
         />
       </Head>
-
-      <main className={styles.main}>
-        {/* <section id="hero" ref={heroSection} className={styles.hero}>
-          <div className={styles.container}>
-            <div className={`${styles['grid-container']}`}>
-              {/* <div className={styles.copy}>
-                <hr />
-                <small>&copy; 2022</small>
-              </div>
-              <div className={styles.landing}>
-                <h1>uniting experience and passion with a single purpose</h1>
-                <p>
-                  I'm a UI/UX designer and web developer who likes to combine my
-                  experience with the job market with what I most enjoy doing:
-                  developing things that make people happy
-                </p>
-                <div className={styles['button-container']}>
-                  <button
-                    type="button"
-                    aria-label="my works"
-                    className={styles.primary}
-                    onClick={() => router.push('/works')}
-                  >
-                    check out my works
-                  </button>
-                  <a
-                    href="mailto:hey@felipegouvea.com"
-                    aria-label="my works"
-                    className={styles.secondary}
-                  >
-                    or we can talk <img src="/images/whiteArrow.png" />
-                  </a>
-                </div>
-              </div>
-              {/* <div className={`${styles['floating-button']}`}>
-                <div className={styles.flexEnd}>
-                  <button type="button" aria-label="get in touch">
-                    <FiArrowRight />
-                  </button>
-                </div>
-              </div>
-            </div>
+      <div className={styles.home}>
+        <section id="hero" className={styles.hero}>
+          <h1>uniting experience and passion with a single purpose</h1>
+          <p>
+            I'm a UI/UX designer and web developer who likes to combine my
+            experience with the job market with what I most enjoy doing:
+            developing things that make people happy
+          </p>
+          <div className={styles['buttons-container']}>
+            <Button variant="primary">check out my works</Button>
+            <Button variant="secondary">or contact me</Button>
           </div>
         </section>
 
-        <section id="works" ref={worksSection} className={styles.works}>
-          <div className={styles.container}>
-            <div className={`${styles['grid-container']}`}>
-              <div className={styles['large-dark-area-left']}>
-                <WorkCard alignment="left" theme="dark" work={PANDUR_MOCK} />
-              </div>
-              <div className={styles['small-white-area-right']}>
-                <WorkCard alignment="right" theme="light" work={IGNEWS_MOCK} />
-              </div>
-              {/* <div className={styles['small-white-area-left']}>
-                <WorkCard alignment="left" theme="light" />
-              </div>
-              <div className={styles['large-dark-area-right']}>
-                <WorkCard alignment="right" theme="dark" />
-              </div>
-            </div>
+        <section className={styles.works}>
+          <div className={styles.presentation}>
+            <h2>Featured works</h2>
+            <a href="#">view all</a>
+          </div>
+
+          <div className={styles['flex-works']}>
+            <WorkCard />
+            <WorkCard />
           </div>
         </section>
-
-        {posts && posts.length > 0 && (
-          <section id="posts" ref={postsSection} className={styles.posts}>
-            <div className={styles.container}>
-              <div className={styles['grid-container']}>
-                {posts.map((post) => (
-                  <BlogCard post={post} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )} */}
-      </main>
+      </div>
     </>
   );
 };
-
 
 export default Home;
